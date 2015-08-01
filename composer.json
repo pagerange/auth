@@ -1,0 +1,8 @@
+{
+      "name": "pagerange/auth",
+          "autoload": {
+                    "psr-0" : {
+                                  "Pagerange\\Auth" : "src"
+                                          }
+                                              }
+}
