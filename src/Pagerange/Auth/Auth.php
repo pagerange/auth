@@ -28,12 +28,19 @@ class Auth implements IAuthenticate {
 
   public static function logout()
   {
+    $_SESSION['auth_user_name'] = null;
+    $_SESSION['auth_user_id'] = null;
+    $_SESSION['auth_logged_in'] = null;
     return true;
   }
 
   public static function check()
   {
-    return true;
+    if($_SESSION['auth_logged_in'] == true) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   public static function user()
