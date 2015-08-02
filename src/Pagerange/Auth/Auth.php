@@ -34,7 +34,7 @@ class Auth implements IAuthenticate {
 
   public static function check()
   {
-    if($_SESSION['auth_logged_in'] == true) {
+    if(isset($_SESSION['auth_logged_in']) && $_SESSION['auth_logged_in'] == true) {
       return true;
     } else {
       return false;
