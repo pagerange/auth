@@ -1,5 +1,5 @@
 {
-    "name": "Pagerange/Auth",
+    "name": "pagerange/auth",
     "description": "Simple Authentication Module",
     "license": "MIT",
     "keywords": ["auth", "authentication", "login", "logout"],
