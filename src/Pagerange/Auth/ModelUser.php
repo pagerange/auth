@@ -13,7 +13,7 @@ class ModelUser
     }
 
     public function login($username, $password) {
-        $query = 'SELECT * FROM auth_user where name = :name';
+        $query = 'select * from auth_user where name = :name';
         $params = [':name' => $username];
         $statement = $this->dbh->prepare($query);
         $statement->execute($params);
@@ -24,6 +24,17 @@ class ModelUser
         } else {
             return false;
         }
+    }
+
+    public function getUser($id)
+    {
+       $query = 'select * from auth_user where id = :id';
+       $params = [':id' => $id];
+       $statement = $this->dbh->prepare($query);
+       $statement->execute($params);
+       $user = $statement->fetch(\PDO::FETCH_OBJ);
+       unset($user->password);
+       return $user; 
     }
 
 }

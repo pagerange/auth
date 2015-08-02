@@ -1,8 +1,21 @@
 {
-      "name": "pagerange/auth",
-          "autoload": {
-                    "psr-0" : {
-                                  "Pagerange\\Auth" : "src"
-                                          }
-                                              }
+    "name": "Pagerange/Auth",
+    "description": "Simple Authentication Module",
+    "license": "MIT",
+    "keywords": ["auth", "authentication", "login", "logout"],
+    "authors": [
+        {
+            "name": "Seve George",
+            "email": "steve@glort.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "4.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pagerange\\Auth\\": "src"
+        }
+    }
 }

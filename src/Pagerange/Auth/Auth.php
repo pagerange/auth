@@ -1,9 +1,7 @@
 <?php
 
 namespace Pagerange\Auth;
-
 use Pagerange\Auth\ModelUser;
-
 use Pagerange\Auth\IAuthenticate;
 
 class Auth implements IAuthenticate {
@@ -45,7 +43,14 @@ class Auth implements IAuthenticate {
 
   public static function user()
   {
-
+    if(self::check()) {
+      $id = $_SESSION['auth_user_id'];
+      $model = new ModelUser();
+      $user = $model->getUser($id);
+      return $user;
+    } else {
+      return false;
+    }
   }
 
   /* PRIVATE HELPED METHODS */
