@@ -6,12 +6,26 @@ use Pagerange\Auth\IAuthenticate;
 
 class Auth implements IAuthenticate {
 
+     private static $dbh = null;
+  
+    public static function init($dbh = null)
+   {
+    if(is_null(self::$dbh) && is_null($dbh)) { 
+      self::$dbh  = new \PDO('mysql:host=' . DB_HOST .  
+        ';dbname=' . DB_NAME, DB_USER, DB_PASS);
+    }
+
+    if(!is_null($dbh)) {
+      self::$dbh = $dbh;
+    }
+  }
+
   public static function login($username, $password)
   {
 
-    self::checkPHPVersion();
-
-    $model = new ModelUser();
+    self::init();
+    
+    $model = new ModelUser(self::$dbh);
 
     $user = $model->login($username, $password);
 
@@ -34,7 +48,17 @@ class Auth implements IAuthenticate {
 
   public static function check()
   {
-    if(isset($_SESSION['auth_logged_in']) && $_SESSION['auth_logged_in'] == true) {
+    if(isset($_SESSION['auth_logged_in']) && 
+      $_SESSION['auth_logged_in'] == true) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public static function guest()
+  {
+    if(!self::check()) {
       return true;
     } else {
       return false;
@@ -44,8 +68,9 @@ class Auth implements IAuthenticate {
   public static function user()
   {
     if(self::check()) {
+      self::init();
       $id = $_SESSION['auth_user_id'];
-      $model = new ModelUser();
+      $model = new ModelUser(self::$dbh);
       $user = $model->getUser($id);
       return $user;
     } else {
@@ -53,7 +78,7 @@ class Auth implements IAuthenticate {
     }
   }
 
-  /* PRIVATE HELPED METHODS */
+  /* PRIVATE HELPER METHODS */
 
   private static function setUserSessionInfo($user)
   {
@@ -62,11 +87,5 @@ class Auth implements IAuthenticate {
       $_SESSION['auth_user_id'] = $user['id'];
   }
 
-  private static function checkPHPVersion()
-  {
-    if(version_compare(phpversion(), '5.4.0', '<')) {
-      throw new AuthException('Auth requres a minimum PHP version of 5.4.0');
-    }
-  }
 
 }

@@ -1,3 +1,6 @@
+# For mysql
+
+
 CREATE TABLE auth_user (
 	id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	name VARCHAR(255) NOT null,
@@ -8,4 +11,25 @@ CREATE TABLE auth_user (
 insert into auth_user 
 (id, name, password)
 VALUES
-(1, 'steve@glort.com', 'password');
+(1, 
+'steve@glort.com',
+ '$2y$11$b3481b296602c6f73a5b3eWoaippvvbKGDnxXlB.8V3zT0vXQ.DcG');
+
+
+# For sqlite
+
+
+CREATE TABLE auth_user (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	name VARCHAR NOT null,
+	password VARCHAR NOT NULL,
+	created_at TIMESTAMP
+);
+
+insert into auth_user 
+(id, name, password)
+VALUES
+(1, 
+'steve@glort.com', 
+'$2y$11$b3481b296602c6f73a5b3eWoaippvvbKGDnxXlB.8V3zT0vXQ.DcG', 
+CURRENT TIMESTAMP);

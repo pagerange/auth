@@ -7,9 +7,9 @@ class ModelUser
 
     private $dbh;
 
-    public function __construct()
+    public function __construct(\PDO $dbh)
     {
-        $this->dbh = new \PDO('mysql:host=' . DB_HOST .  ';dbname=' . DB_NAME, DB_USER, DB_PASS);
+      $this->dbh = $dbh;
     }
 
     public function login($username, $password) {
