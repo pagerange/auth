@@ -9,9 +9,7 @@
             "email": "steve@glort.com"
         }
     ],
-    "require": {
-    	"phpunit/phpunit": "4.0.*"
-    },
+    "require": {},
     "require-dev": {},
     "autoload": {
         "psr-0" : {
