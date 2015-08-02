@@ -13,15 +13,14 @@ class ModelUser
     }
 
     public function login($username, $password) {
-        $query = 'SELECT * FROM auth_user where username = :username';
-        $params = [':username' => $username];
+        $query = 'SELECT * FROM auth_user where name = :name';
+        $params = [':name' => $username];
         $statement = $this->dbh->prepare($query);
         $statement->execute($params);
-        $result = $statement->fetch(\PDO::FETCH_ASSOC);
-        var_dump($result);
-        if(crypt($password, $result[0]->password) == $result[0]->password)
+        $user = $statement->fetch(\PDO::FETCH_ASSOC);
+        if(crypt($password, $user['password']) == $user['password'])
         {
-            return $result[0];
+            return $user;
         } else {
             return false;
         }

@@ -4,7 +4,7 @@
  * Methods all authenticators must provide
  */
 
-namespace Pagerange;
+namespace Pagerange\Auth;
 
 
 interface IAuthenticate

@@ -2,7 +2,9 @@
 
 namespace Pagerange\Auth;
 
-use Pagerange\ModelUser;
+use Pagerange\Auth\ModelUser;
+
+use Pagerange\Auth\IAuthenticate;
 
 class Auth implements IAuthenticate {
 
@@ -36,21 +38,16 @@ class Auth implements IAuthenticate {
 
   public static function user()
   {
-    $user = new \stdClass();
-    $user->id = 1;
-    $user->name = 'steve@glort.com';
-    return $user;
 
   }
-
 
   /* PRIVATE HELPED METHODS */
 
   private static function setUserSessionInfo($user)
   {
       $_SESSION['auth_logged_in'] = true;
-      $_SESSION['auth_user_name'] = $user->name;
-      $_SESSION['auth_user_id'] = $user->id;
+      $_SESSION['auth_user_name'] = $user['name'];
+      $_SESSION['auth_user_id'] = $user['id'];
   }
 
   private static function checkPHPVersion()
