@@ -9,10 +9,10 @@
             "email": "steve@glort.com"
         }
     ],
-    "require": {},
-    "require-dev": {
-        "phpunit/phpunit": "4.0.*"
+    "require": {
+    	"phpunit/phpunit": "4.0.*"
     },
+    "require-dev": {},
     "autoload": {
         "psr-0" : {
           "Pagerange\\Auth" : "src"
