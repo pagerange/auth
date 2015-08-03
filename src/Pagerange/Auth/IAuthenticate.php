@@ -1,7 +1,12 @@
 <?php
+
 /**
- * Authenticate Interface
- * Methods all authenticators must provide
+ * Authenticate interface
+ * Defines methods all Authenticators must provide
+ * @author Steve George <steve@glort.com>
+ * @version 1.0
+ * @license MIT
+ * @updated 2015-08-03
  */
 
 namespace Pagerange\Auth;
