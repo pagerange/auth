@@ -4,41 +4,40 @@ require '../../../autoload.php';
 use Pagerange\Auth\Auth;
 use Pagerange\Auth\ModelUser;
 
-class AuthTest extends PHPUnit_Framework_TestCase
+class AuthLoginTest extends PHPUnit_Framework_TestCase
 {
     
-    public function testInit()
+    public function setUp()
     {
         $dbh = new \pdo('sqlite:./test_db.sqlite');
         Auth::init($dbh);
-        $this->assertequals(true, $dbh instanceof \PDO);        
     }
 
-    public function testloginGood()
+    public function testLoginGood()
     {
         $login = auth::login('steve@glort.com', 'mypass');
         $this->assertequals(true, true);
     }
-
-    public function testloginBadPassword()
+ 
+    public function testLoginBadPassword()
     {
         $login = auth::login('steve@glort.com', 'badpass');
         $this->assertequals(false, false);
     }
 
-    public function testloginBadEmail()
+    public function testLoginBadEmail()
     {
         $login = auth::login('steve@hotmail.com', 'mypass');
         $this->assertequals(false, false);
     }
 
-    public function testloginEmptyEmail()
+    public function testLoginEmptyEmail()
     {
         $login = auth::login('', 'mypass');
         $this->assertequals(false, false);
     }
 
-    public function testloginEmptyPassword()
+    public function testLoginEmptyPassword()
     {
         $login = auth::login('steve@glort.com', '');
         $this->assertequals(false, false);
