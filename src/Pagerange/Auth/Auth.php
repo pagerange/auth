@@ -72,6 +72,13 @@ class Auth implements IAuthenticate {
     return true;
   }
 
+    public static function register(\stdClass $user)
+    {
+        $model = new ModelUser(self::$dbh);
+        $id = $model->save($user);
+        return $model->getUser($id);
+    }
+
 
   /**
    * Check to see if user is logged in

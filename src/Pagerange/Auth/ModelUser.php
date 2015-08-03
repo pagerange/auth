@@ -96,6 +96,58 @@ class ModelUser
         return $result;
     }
 
+    public function save($user)
+    {
+        $params = $this->getParams($user);
+        $query = $this->getQuery($user);
+        var_dump($query);
+        die;
+        $id = $this->executeQuery($query, $params, \PDO::FETCH_OBJ);
+        return $id;
+    }
+
+    /**
+     * Create params array out of user object
+     * @param $user
+     * @return array
+     */
+    private function getParams($user)
+    {
+        $params = [];
+        foreach($user as $key => $value) {
+            $params[':' . $key] = $value;
+        }
+        return $params;
+    }
+
+    private function getQuery($user)
+    {
+        $fields = $this->getQueryFields($user);
+        $params = $this->getParamsList($user);
+        $query = "INSERT INTO auth_user ($fields) VALUES ($params)";
+        return $query;
+    }
+
+    private function getQueryFields(\stdClass $user)
+    {
+        $fields = '';
+        foreach($user as $key => $value) {
+            $fields .= $key . ',';
+        }
+        $trimmed_fields = rtrim($fields, ',');
+        return $trimmed_fields;
+    }
+
+    private function getParamsList(\stdClass $user)
+    {
+        $params = '';
+        foreach($user as $key => $value) {
+            $params .= ':' . $key . ',';
+        }
+        $trimmed_params = rtrim($params, ',');
+        return $trimmed_params;
+    }
+
     /**
      * Get a user with the passed name
      * @param string $name

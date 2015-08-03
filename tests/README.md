@@ -2,7 +2,7 @@
 
 This test uses ModelUser, which requires a database connection.
 
-For the purposes of the test, we inject an sqlite PDO object into
+For the purposes of the test, we inject an sqlite PDO connect into
 the Auth class to use for testing.  The database file is stored in
 the test folder.
 
