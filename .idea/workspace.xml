@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff423669-277c-45e4-b34c-5b75a07cca0c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/inc/nav.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pagerange/Auth/Auth.php" afterPath="$PROJECT_DIR$/src/Pagerange/Auth/Auth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pagerange/Auth/ModelUser.php" afterPath="$PROJECT_DIR$/src/Pagerange/Auth/ModelUser.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/about.php" afterPath="$PROJECT_DIR$/demo/about.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/inc/config.php" afterPath="$PROJECT_DIR$/demo/inc/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/contact.php" afterPath="$PROJECT_DIR$/demo/contact.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/home.php" afterPath="$PROJECT_DIR$/demo/home.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/index.php" afterPath="$PROJECT_DIR$/demo/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/register.php" afterPath="$PROJECT_DIR$/demo/register.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/files/seed.sql" afterPath="$PROJECT_DIR$/files/seed.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/shop.php" afterPath="$PROJECT_DIR$/demo/shop.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="ff423669-277c-45e4-b34c-5b75a07cca0c" name="Default" comment="" />
     <ignored path="auth.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -64,9 +50,11 @@
       <file leaf-file-name="IAuthenticate.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Pagerange/Auth/IAuthenticate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2630058">
-              <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
-              <folding />
+            <state vertical-scroll-proportion="-0.23988439">
+              <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+              <folding>
+                <element signature="e#7#188#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -210,16 +198,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="auth" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="auth" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="auth" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -464,9 +442,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pagerange/Auth/IAuthenticate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2630058">
-          <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
-          <folding />
+        <state vertical-scroll-proportion="-0.23988439">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+          <folding>
+            <element signature="e#7#188#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
