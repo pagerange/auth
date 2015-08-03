@@ -12,7 +12,7 @@ class AuthUserTest extends PHPUnit_Framework_TestCase
     {
         $dbh = new \pdo('sqlite:./test_db.sqlite');
         Auth::init($dbh);
-        Auth::login('steve@glort.com', 'mypass');
+        Auth::login('steve@mydomain.com', 'mypass');
     }
 
     public function testAuthUserObjectExists()
@@ -22,7 +22,7 @@ class AuthUserTest extends PHPUnit_Framework_TestCase
  
     public function testAuthUserName()
     {
-        $this->assertequals('steve@glort.com', Auth::user()->name);
+        $this->assertequals('steve@mydomain.com', Auth::user()->name);
     }
 
     public function testAuthUserId()

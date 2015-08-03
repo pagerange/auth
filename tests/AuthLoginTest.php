@@ -15,13 +15,13 @@ class AuthLoginTest extends PHPUnit_Framework_TestCase
 
     public function testLoginGood()
     {
-        $login = auth::login('steve@glort.com', 'mypass');
+        $login = auth::login('steve@mydomain.com', 'mypass');
         $this->assertequals(true, true);
     }
  
     public function testLoginBadPassword()
     {
-        $login = auth::login('steve@glort.com', 'badpass');
+        $login = auth::login('steve@mydomain.com', 'badpass');
         $this->assertequals(false, false);
     }
 
@@ -39,7 +39,7 @@ class AuthLoginTest extends PHPUnit_Framework_TestCase
 
     public function testLoginEmptyPassword()
     {
-        $login = auth::login('steve@glort.com', '');
+        $login = auth::login('steve@mydomain.com', '');
         $this->assertequals(false, false);
     }
 

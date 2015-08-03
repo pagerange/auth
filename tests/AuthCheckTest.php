@@ -13,7 +13,7 @@ class AuthCheckTest extends PHPUnit_Framework_TestCase
     {
       $_SESSION['auth_user_id'] = 1;
       $_SESSION['auth_logged_in'] = true;
-      $_SESSION['auth_user_name'] = 'steve@glort.com'; 
+      $_SESSION['auth_user_name'] = 'steve@mydomain.com'; 
     }
 
     public function testSessionExists()

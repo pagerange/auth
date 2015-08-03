@@ -12,7 +12,7 @@ insert into auth_user
 (id, name, password)
 VALUES
 (1, 
-'steve@glort.com',
+'steve@mydomain.com',
  '$2y$11$b3481b296602c6f73a5b3eWoaippvvbKGDnxXlB.8V3zT0vXQ.DcG');
 
 
@@ -23,13 +23,13 @@ CREATE TABLE auth_user (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	name VARCHAR NOT null,
 	password VARCHAR NOT NULL,
-	created_at TIMESTAMP
+	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 insert into auth_user 
 (id, name, password)
 VALUES
 (1, 
-'steve@glort.com', 
-'$2y$11$b3481b296602c6f73a5b3eWoaippvvbKGDnxXlB.8V3zT0vXQ.DcG', 
-CURRENT TIMESTAMP);
+'steve@mydomain.com', 
+'$2y$11$b3481b296602c6f73a5b3eWoaippvvbKGDnxXlB.8V3zT0vXQ.DcG' 
+);
