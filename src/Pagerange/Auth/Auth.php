@@ -46,6 +46,8 @@ class Auth implements IAuthenticate {
   public static function login($username, $password)
   {
 
+    self::logout();
+      
     $model = new ModelUser(self::$dbh);
 
     $user = $model->login($username, $password);

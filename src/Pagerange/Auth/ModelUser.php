@@ -37,7 +37,11 @@ class ModelUser
      */
     public function login($name, $password) {
         $user = $this->getuserByName($name);
-        return $this->passwordsMatch($password, $user);
+        if($user) {
+            return $this->passwordsMatch($password, $user);
+        } else {
+            return false;
+        }
    }
 
     /**
