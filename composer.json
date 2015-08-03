@@ -9,11 +9,6 @@
             "email": "steve@glort.com"
         }
     ],
-    "packages": {
-        "pagerange/auth": {
-            "0.0.1": { @composer.json }
-        }
-    }
     "require": {},
     "require-dev": {},
     "autoload": {
