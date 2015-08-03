@@ -19,6 +19,7 @@ class ModelUser
      */
     private $dbh;
 
+
     /**
      * @param \PDO $dbh
      */
@@ -26,6 +27,7 @@ class ModelUser
     {
       $this->dbh = $dbh;
     }
+
 
     /**
      * log in the user
@@ -44,6 +46,7 @@ class ModelUser
         }
    }
 
+
     /**
      * Get a user with the passed id
      * @param int $id
@@ -57,6 +60,7 @@ class ModelUser
        return $user; 
     }
 
+
     /**
      * Compare user provided password with stored digest
      * @param $password
@@ -65,13 +69,33 @@ class ModelUser
      */
     private function passwordsMatch($password, $user)
     {
-        if(crypt($password, $user->password) == $user->password)
+        if(password_verify($password, $user->password))
         {
             return $user;
         } else {
             return false;
         }
     }
+
+
+
+    /**
+     * Save a user object as a record in the database
+     * @param $user
+     * @return string
+     * @throws AuthException
+     */
+    public function save($user)
+    {
+        $user->password = $this->hashPassword($user->password);
+        $params = $this->getParams($user);
+        $query = $this->getQuery($user);
+        $this->executeQuery($query, $params, \PDO::FETCH_OBJ);
+        return $this->dbh->lastInsertId();
+    }
+
+
+    /* PRIVATE HELPER FUNCTIONS */
 
     /**
      * Execute a query and return the result
@@ -82,28 +106,18 @@ class ModelUser
      */
     private function executeQuery($query, $params = [], $result_type)
     {
+        if (!$statement = $this->dbh->prepare($query)) {
+            throw new AuthException(print_r($this->dbh->errorInfo()));
+        }
 
-       if(!$statement = $this->dbh->prepare($query)) {
-           throw new AuthException('Could not prepare query');
-       }
-
-       if(!$statement->execute($params)) {
-           throw new AuthException('Could not execute query');
-       }
+        if (!$statement->execute($params)) {
+            var_dump($this->dbh->errorInfo());
+            throw new AuthException(print_r($this->dbh->errorInfo()));
+        }
 
         $result = $statement->fetch($result_type);
 
         return $result;
-    }
-
-    public function save($user)
-    {
-        $params = $this->getParams($user);
-        $query = $this->getQuery($user);
-        var_dump($query);
-        die;
-        $id = $this->executeQuery($query, $params, \PDO::FETCH_OBJ);
-        return $id;
     }
 
     /**
@@ -120,6 +134,12 @@ class ModelUser
         return $params;
     }
 
+    /**
+     * Prepare an insert query based on the key/value pairs
+     * passed in a user object.
+     * @param $user
+     * @return string
+     */
     private function getQuery($user)
     {
         $fields = $this->getQueryFields($user);
@@ -128,6 +148,12 @@ class ModelUser
         return $query;
     }
 
+    /**
+     * Prepare a list of the DB fields to be used in an INSERT or UPDATE
+     * query based on the key/value pairs passed in as user object
+     * @param \stdClass $user
+     * @return string
+     */
     private function getQueryFields(\stdClass $user)
     {
         $fields = '';
@@ -138,6 +164,12 @@ class ModelUser
         return $trimmed_fields;
     }
 
+    /**
+     * Prepare a list of bound parameter tags for a query
+     * based on the key/value pairs passed in a user object
+     * @param \stdClass $user
+     * @return string
+     */
     private function getParamsList(\stdClass $user)
     {
         $params = '';
@@ -146,6 +178,17 @@ class ModelUser
         }
         $trimmed_params = rtrim($params, ',');
         return $trimmed_params;
+    }
+
+    /**
+     * Create a salted hash of a plain text password
+     * @param $password
+     * @return string
+     */
+    private function hashPassword($password)
+    {
+        $digest = password_hash($password, PASSWORD_DEFAULT);
+        return $digest;
     }
 
     /**
@@ -158,4 +201,5 @@ class ModelUser
         $query = 'SELECT * FROM auth_user WHERE name = :name';
         return $this->executeQuery($query, [':name' => $name], \PDO::FETCH_OBJ);
     }
-}
+
+} // End of ModelUsel Class

@@ -4,15 +4,25 @@ require 'inc/config.php';
 
 use Pagerange\Auth\Auth;
 
-$dbh  = new \PDO('sqlite:../tests/test_db.sqlite');
+$dbh  = new \PDO('sqlite:../files/test_db.sqlite');
 
 Auth::init($dbh);
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
+	unset($_POST['password2']);
     $user = (Object) $_POST;
-		Auth::register($user);
+	try {
+		$registered_user = Auth::register($user);
+	} catch (\Pagerange\Auth\AuthException $e) {
+		echo $e->getMessage();
+		var_dump($e->getTrace());
+		die;
+	}
 }
-
+if(Auth::check()) {
+	header('Location: profile.php');
+	exit;
+}
 
 
 ?><!DOCTYPE html>
@@ -22,15 +32,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	</head>
 	<body>
 
-	<ul class="nav">
-			<li><a href="home.php">Home</a></li>
-			<li><a href="about.php">About</a></li>
-			<li><a href="shop.php">Shop</a></li>
-			<li><a href="contact.php">Contact</a></li>
-			<li><a href="logout.php">Logout</a></li>
-		</ul>
+	<?php include('inc/nav.php'); ?>
 
-	<h1>You must be logged in to use this site</h1>
+
+	<h1>Please Register for an account</h1>
 
     <o>Working credentials:  steve@mydomain.com | mypass</p>
 		<form action="#" method="post">
@@ -62,8 +67,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<p><label for="city">City:</label>
 			<input type="text" name="city" id="city" /></p>
 
-			<p><label for="province">Province:</label>
-			<input type="text" name="province" id="province" /></p>
+			<p><label for="region">Province/Region:</label>
+			<input type="text" name="region" id="region" /></p>
 
 			<p><label for="postal_code">Postal Code:</label>
 			<input type="text" name="postal_code" id="postal_code" /></p>

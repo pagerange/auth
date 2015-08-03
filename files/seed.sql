@@ -23,6 +23,14 @@ CREATE TABLE auth_user (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	name VARCHAR NOT null,
 	password VARCHAR NOT NULL,
+	first_name VARCHAR,
+	last_name VARCHAR,
+	street_1 VARCHAR,
+	street_2 VARCHAR,
+	city VARCHAR,
+	region VARCHAR,
+	postal_code VARCHAR,
+	phone VARCHAR,
 	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

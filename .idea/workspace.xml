@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff423669-277c-45e4-b34c-5b75a07cca0c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/inc/nav.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/profile.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pagerange/Auth/Auth.php" afterPath="$PROJECT_DIR$/src/Pagerange/Auth/Auth.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pagerange/Auth/ModelUser.php" afterPath="$PROJECT_DIR$/src/Pagerange/Auth/ModelUser.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/README.md" afterPath="$PROJECT_DIR$/tests/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/about.php" afterPath="$PROJECT_DIR$/demo/about.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/inc/config.php" afterPath="$PROJECT_DIR$/demo/inc/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/contact.php" afterPath="$PROJECT_DIR$/demo/contact.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/home.php" afterPath="$PROJECT_DIR$/demo/home.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/index.php" afterPath="$PROJECT_DIR$/demo/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/register.php" afterPath="$PROJECT_DIR$/demo/register.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/files/seed.sql" afterPath="$PROJECT_DIR$/files/seed.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/shop.php" afterPath="$PROJECT_DIR$/demo/shop.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="auth.iws" />
@@ -26,16 +35,108 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ModelUser.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ModelUser.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Pagerange/Auth/ModelUser.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55172414">
-              <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="103" selection-end-column="12" />
+            <state vertical-scroll-proportion="-162.70967">
+              <caret line="204" column="27" selection-start-line="204" selection-start-column="27" selection-end-line="204" selection-end-column="27" />
               <folding>
-                <marker date="1438618753000" expanded="true" signature="1017:1055" placeholder="SELECT * FRO..auth_user..." />
-                <marker date="1438618753000" expanded="true" signature="2834:2882" placeholder="INSERT INTO ..." />
-                <marker date="1438618753000" expanded="true" signature="3599:3641" placeholder="SELECT * FRO..auth_user..." />
+                <marker date="1438633236000" expanded="true" signature="1020:1058" placeholder="SELECT * FRO..auth_user..." />
+                <marker date="1438633236000" expanded="true" signature="3269:3317" placeholder="INSERT INTO ..." />
+                <marker date="1438633236000" expanded="true" signature="4687:4729" placeholder="SELECT * FRO..auth_user..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Auth.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pagerange/Auth/Auth.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.8965517">
+              <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+              <folding>
+                <element signature="e#7#142#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IAuthenticate.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Pagerange/Auth/IAuthenticate.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.2630058">
+              <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuthException.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pagerange/Auth/AuthException.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.516129">
+              <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo/register.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.206897">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo/home.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.870968">
+              <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.275862">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="logout.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo/logout.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo/profile.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.9310346">
+              <caret line="11" column="27" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shop.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo/shop.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.548387">
+              <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -51,8 +152,18 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/Pagerange/Auth/IAuthenticate.php" />
         <option value="$PROJECT_DIR$/src/Pagerange/Auth/AuthException.php" />
-        <option value="$PROJECT_DIR$/src/Pagerange/Auth/Auth.php" />
+        <option value="$PROJECT_DIR$/files/seed.sql" />
+        <option value="$PROJECT_DIR$/demo/inc/config.php" />
+        <option value="$PROJECT_DIR$/demo/inc/nav.php" />
+        <option value="$PROJECT_DIR$/demo/about.php" />
+        <option value="$PROJECT_DIR$/demo/contact.php" />
+        <option value="$PROJECT_DIR$/demo/home.php" />
+        <option value="$PROJECT_DIR$/demo/index.php" />
+        <option value="$PROJECT_DIR$/demo/profile.php" />
+        <option value="$PROJECT_DIR$/demo/shop.php" />
+        <option value="$PROJECT_DIR$/demo/register.php" />
         <option value="$PROJECT_DIR$/src/Pagerange/Auth/ModelUser.php" />
+        <option value="$PROJECT_DIR$/src/Pagerange/Auth/Auth.php" />
       </list>
     </option>
   </component>
@@ -65,7 +176,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
+    <option name="x" value="300" />
+    <option name="y" value="82" />
     <option name="width" value="1280" />
     <option name="height" value="773" />
   </component>
@@ -110,32 +222,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="auth" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="auth" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Pagerange" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Auth" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -143,6 +233,12 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/demo" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -173,6 +269,9 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ff423669-277c-45e4-b34c-5b75a07cca0c" name="Default" comment="" />
@@ -183,15 +282,17 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="773" extended-state="6" />
-    <editor active="true" />
+    <frame x="300" y="82" width="1280" height="773" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -199,11 +300,9 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -217,96 +316,157 @@
     <entry file="file://$PROJECT_DIR$/src/Pagerange/Auth/ModelUser.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1438618753000" expanded="true" signature="1017:1055" placeholder="SELECT * FRO..auth_user..." />
-            <marker date="1438618753000" expanded="true" signature="2834:2882" placeholder="INSERT INTO ..." />
-            <marker date="1438618753000" expanded="true" signature="3599:3641" placeholder="SELECT * FRO..auth_user..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9307479">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pagerange/Auth/IAuthenticate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2413793">
-          <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
-          <folding>
-            <marker date="1438615243000" expanded="true" signature="-1:-1" placeholder=" Authenticate interface ..." />
-            <marker date="1438615243000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1438615243000" expanded="true" signature="-1:-1" placeholder=" Login the user ..." />
-            <marker date="1438615243000" expanded="true" signature="-1:-1" placeholder=" Logout the user ..." />
-            <marker date="1438615243000" expanded="true" signature="-1:-1" placeholder=" Check user is logged in ..." />
-            <marker date="1438615243000" expanded="true" signature="-1:-1" placeholder=" Return the current user ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pagerange/Auth/AuthException.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10344828">
-          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
-          <folding>
-            <marker date="1438615243000" expanded="true" signature="-1:-1" placeholder=" Exception class for Auth class ..." />
-            <marker date="1438615243000" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pagerange/Auth/Auth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55172414">
-          <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
-          <folding>
-            <marker date="1438618560000" expanded="false" signature="-1:-1" placeholder=" Simple authentication class ..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder=" @$dbh \PDO ..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder=" Initialize and store a database handle in the class ..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder=" Accept $username and $password and pass them to ..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder=" Log out user by clearing stored $_SESSION values ..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder=" Check to see if user is logged in ..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder=" Check to see if the user is a guest ..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder=" Get a User object. ..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder=" Sets the user's $_SESSION info once the user has ..." />
-            <marker date="1438618560000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1438633236000" expanded="true" signature="1020:1058" placeholder="SELECT * FRO..auth_user..." />
+            <marker date="1438633236000" expanded="true" signature="3269:3317" placeholder="INSERT INTO ..." />
+            <marker date="1438633236000" expanded="true" signature="4687:4729" placeholder="SELECT * FRO..auth_user..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pagerange/Auth/ModelUser.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55172414">
-          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="103" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
           <folding>
-            <marker date="1438618753000" expanded="true" signature="1017:1055" placeholder="SELECT * FRO..auth_user..." />
-            <marker date="1438618753000" expanded="true" signature="2834:2882" placeholder="INSERT INTO ..." />
-            <marker date="1438618753000" expanded="true" signature="3599:3641" placeholder="SELECT * FRO..auth_user..." />
+            <marker date="1438633236000" expanded="true" signature="1020:1058" placeholder="SELECT * FRO..auth_user..." />
+            <marker date="1438633236000" expanded="true" signature="3269:3317" placeholder="INSERT INTO ..." />
+            <marker date="1438633236000" expanded="true" signature="4687:4729" placeholder="SELECT * FRO..auth_user..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9307479">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/seed.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.185185">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/inc/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.870968">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/inc/nav.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.709677">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/contact.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.870968">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/about.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.1551723">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="9" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.870968">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.275862">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/logout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/shop.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.548387">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.9310346">
+          <caret line="11" column="27" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.206897">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pagerange/Auth/ModelUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-162.70967">
+          <caret line="204" column="27" selection-start-line="204" selection-start-column="27" selection-end-line="204" selection-end-column="27" />
+          <folding>
+            <marker date="1438633236000" expanded="true" signature="1020:1058" placeholder="SELECT * FRO..auth_user..." />
+            <marker date="1438633236000" expanded="true" signature="3269:3317" placeholder="INSERT INTO ..." />
+            <marker date="1438633236000" expanded="true" signature="4687:4729" placeholder="SELECT * FRO..auth_user..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pagerange/Auth/Auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.8965517">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+          <folding>
+            <element signature="e#7#142#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pagerange/Auth/AuthException.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.516129">
+          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pagerange/Auth/IAuthenticate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2630058">
+          <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
