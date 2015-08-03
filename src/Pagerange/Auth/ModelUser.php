@@ -78,7 +78,7 @@ class ModelUser
      */
     private function executeQuery($query, $params = [], $result_type)
     {
-        
+
        if(!$statement = $this->dbh->prepare($query)) {
            throw new AuthException('Could not prepare query');
        }

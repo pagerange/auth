@@ -58,7 +58,6 @@ class Auth implements IAuthenticate {
     }
   }
 
-
   /**
    * Log out user by clearing stored $_SESSION values
    * @return bool
