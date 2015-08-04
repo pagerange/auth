@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff423669-277c-45e4-b34c-5b75a07cca0c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/admin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/files/test_db.sqlite" afterPath="$PROJECT_DIR$/files/test_db.sqlite" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pagerange/Auth/Auth.php" afterPath="$PROJECT_DIR$/src/Pagerange/Auth/Auth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/inc/nav.php" afterPath="$PROJECT_DIR$/demo/inc/nav.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/profile.php" afterPath="$PROJECT_DIR$/demo/profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/files/seed.sql" afterPath="$PROJECT_DIR$/files/seed.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="ff423669-277c-45e4-b34c-5b75a07cca0c" name="Default" comment="" />
     <ignored path="auth.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -32,8 +24,8 @@
       <file leaf-file-name="ModelUser.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Pagerange/Auth/ModelUser.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="4.569364">
-              <caret line="204" column="27" selection-start-line="204" selection-start-column="27" selection-end-line="204" selection-end-column="27" />
+            <state vertical-scroll-proportion="2.7052023">
+              <caret line="94" column="5" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
               <folding>
                 <marker date="1438703181000" expanded="true" signature="1020:1058" placeholder="SELECT * FRO..auth_user..." />
                 <marker date="1438703181000" expanded="true" signature="3268:3316" placeholder="INSERT INTO ..." />
@@ -702,8 +694,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pagerange/Auth/ModelUser.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.569364">
-          <caret line="204" column="27" selection-start-line="204" selection-start-column="27" selection-end-line="204" selection-end-column="27" />
+        <state vertical-scroll-proportion="2.7052023">
+          <caret line="94" column="5" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
           <folding>
             <marker date="1438703181000" expanded="true" signature="1020:1058" placeholder="SELECT * FRO..auth_user..." />
             <marker date="1438703181000" expanded="true" signature="3268:3316" placeholder="INSERT INTO ..." />
