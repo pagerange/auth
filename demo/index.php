@@ -21,8 +21,6 @@ if(Auth::check()) {
 
 }
 
-$form = new FormBuilder;
-
 $title = "Log in";
 
 include 'inc/header.php';

@@ -15,7 +15,7 @@ require 'inc/header.php';
 
 ?>
 
-<div class="container"
+<div class="container">
 
 	<h1>Home</h1>
 
