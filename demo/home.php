@@ -9,18 +9,17 @@ if(Auth::guest()) {
 	exit;
 }
 
-?><!DOCTYPE html>
-<html>
-	<head>
-		<title>Home</title>
-	</head>
-	<body>
+$title = 'Home';
 
-	<?php include('inc/nav.php'); ?>
+require 'inc/header.php';
 
+?>
+
+<div class="container"
 
 	<h1>Home</h1>
 
+</div>
 
 	</body>
 <html>

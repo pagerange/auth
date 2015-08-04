@@ -24,16 +24,13 @@ if(Auth::check()) {
 	exit;
 }
 
+$title = "Register";
 
-?><!DOCTYPE html>
-<html>
-	<head>
-		<title>Test Auth</title>
-	</head>
-	<body>
+require 'inc/header.php';
 
-	<?php include('inc/nav.php'); ?>
+?>
 
+<div class="container">
 
 	<h1>Please Register for an account</h1>
 
@@ -77,5 +74,8 @@ if(Auth::check()) {
 
 
 		</form>
+
+</div>
+
 	</body>
 <html>

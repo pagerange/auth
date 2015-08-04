@@ -13,14 +13,13 @@ if(Auth::guest()) {
 	exit;
 }
 
-?><!DOCTYPE html>
-<html>
-	<head>
-		<title>Profile</title>
-	</head>
-	<body>
+$title = "Profile";
 
-		<?php include('inc/nav.php'); ?>
+require 'inc/header.php';
+
+?>
+
+<div class="container">
 
 		<h1>Profile</h1>
 
@@ -41,6 +40,8 @@ if(Auth::guest()) {
 		<?php endforeach; ?>
 
 		</ul>
+
+</div>
 
 	</body>
 <html>
