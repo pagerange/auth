@@ -57,7 +57,7 @@ class ModelUser
        $query = 'SELECT * FROM auth_user WHERE id = :id';
        $user = $this->executeQuery($query, [':id' => $id], \PDO::FETCH_OBJ);
        unset($user->password);
-       return $user; 
+       return $user;
     }
 
 

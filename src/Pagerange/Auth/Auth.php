@@ -47,7 +47,7 @@ class Auth implements IAuthenticate {
   {
 
     self::logout();
-      
+
     $model = new ModelUser(self::$dbh);
 
     $user = $model->login($username, $password);
@@ -95,7 +95,7 @@ class Auth implements IAuthenticate {
    */
   public static function check()
   {
-    if(isset($_SESSION['auth_logged_in']) && 
+    if(isset($_SESSION['auth_logged_in']) &&
       $_SESSION['auth_logged_in'] == true) {
       return true;
     } else {
