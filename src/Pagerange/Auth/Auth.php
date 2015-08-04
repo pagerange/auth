@@ -18,6 +18,7 @@ class Auth implements IAuthenticate {
    * Variable to hold the PDO database handle
    */
     private static $dbh = null;
+    private $groups;
 
 
   /**
@@ -82,6 +83,7 @@ class Auth implements IAuthenticate {
     public static function register(\stdClass $user)
     {
         $model = new ModelUser(self::$dbh);
+        $user->ugroups = json_encode(["user"]);
         $id = $model->save($user);
         $user = $model->getUser($id);
         self::setUserSessionInfo($user);
@@ -135,6 +137,19 @@ class Auth implements IAuthenticate {
     }
   }
 
+  public static function group($group)
+  {
+      if(self::check()) {
+        if (in_array($group, $_SESSION['ugroups'])) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+   }
+
 
   /* PRIVATE HELPER METHODS */
 
@@ -149,6 +164,7 @@ class Auth implements IAuthenticate {
       $_SESSION['auth_logged_in'] = true;
       $_SESSION['auth_user_name'] = $user->name;
       $_SESSION['auth_user_id'] = $user->id;
+      $_SESSION['ugroups'] = json_decode($user->ugroups);
   }
 
 

@@ -6,7 +6,7 @@ CREATE TABLE auth_user (
 	id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	name VARCHAR(255) NOT null,
 	password VARCHAR(255) NOT NULL,
-  ugroup VARCHAR(255) NOT NULL DEFAULT 'user',
+  ugroups text NOT NULL DEFAULT '["user"]'",
 	created_at TIMESTAMP NOT NULL DEFAULT current_timestamp
 );
 
@@ -16,6 +16,7 @@ VALUES
 (1,
 'steve@mydomain.com',
  '$2y$11$b3481b296602c6f73a5b3eWoaippvvbKGDnxXlB.8V3zT0vXQ.DcG');
+ 
 
 ## Sample scheme with additional fields
 
@@ -23,7 +24,7 @@ CREATE TABLE auth_user (
 id BIGINT PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR(255) NOT NULL,
 password VARCHAR(255) NOT NULL,
-ugroup VARCHAR(255) NOT NULL DEFAULT 'user',
+ugroups text NOT NULL DEFAULT '["user"]'",
 first_name VARCHAR(255),
 last_name VARCHAR(255),
 street_1 VARCHAR(255),
@@ -43,7 +44,7 @@ CREATE TABLE auth_user (
 	id BIGINT PRIMARY KEY NOT NULL AUTOINCREMENT,
 	name VARCHAR(255) NOT null,
 	password VARCHAR(255) NOT NULL,
-  ugroup VARCHAR(255) NOT NULL DEFAULT 'user',
+  ugroups text NOT NULL DEFAULT '["user"]'",
 	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -61,6 +62,7 @@ CREATE TABLE auth_user (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	name VARCHAR NOT null,
 	password VARCHAR NOT NULL,
+  ugroups text NOT NULL DEFAULT '["user"]'",
   ugroup VARCHAR(255) NOT NULL DEFAULT 'user',
 	first_name VARCHAR,
 	last_name VARCHAR,

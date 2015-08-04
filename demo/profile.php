@@ -25,6 +25,10 @@ require 'inc/header.php';
 
 		<h2>Your account info</h2>
 
+	<?php if(Auth::group('superuser')) : ?>
+		<h3>Welcome, Superuser!</h3>
+	<?php endif; ?>
+
 		<ul>
 
 		<?php foreach(Auth::user() as $key => $value) : ?>
