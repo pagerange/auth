@@ -9,9 +9,14 @@
             "email": "steve@glort.com"
         }
     ],
-    "require": {},
-    "require-dev": {
+    "repositories" : [
+      "type" : "vcs",
+      "url" : "git@bitbucket.org:pagerange/session.git"
+    ],
+    "require": {
       "pagerange/session" : "dev-master"
+      },
+    "require-dev": {
       },
     "autoload": {
         "psr-0" : {
