@@ -10,8 +10,10 @@
         }
     ],
     "repositories" : [
-      "type" : "vcs",
-      "url" : "git@bitbucket.org:pagerange/session.git"
+      {
+        "type" : "vcs",
+        "url" : "git@bitbucket.org:pagerange/session.git"
+      }
     ],
     "require": {
       "pagerange/session" : "dev-master"
