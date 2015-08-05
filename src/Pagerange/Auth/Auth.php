@@ -11,6 +11,9 @@
 
 namespace Pagerange\Auth;
 
+use \Pagerange\Session\Session;
+use \Pagerange\Session\Flash;
+
 class Auth implements IAuthenticate {
 
   /**
@@ -18,7 +21,8 @@ class Auth implements IAuthenticate {
    * Variable to hold the PDO database handle
    */
     private static $dbh = null;
-    private $groups;
+    private static $session;
+    private static $flash;
 
 
   /**
@@ -33,7 +37,14 @@ class Auth implements IAuthenticate {
        if(!is_null($dbh)) {
            self::$dbh = $dbh;
        }
-       return static::$dbh;
+
+       self::$session = new \Pagerange\Session\Session();
+       var_dump(self::$session);
+       die;
+       self::$flash = new Flash(self::$session);
+
+       return true;
+
   }
 
 
@@ -67,10 +78,11 @@ class Auth implements IAuthenticate {
    */
   public static function logout()
   {
-    $_SESSION['auth_user_name'] = null;
-    $_SESSION['auth_user_id'] = null;
-    $_SESSION['auth_logged_in'] = null;
-    return true;
+      self::$session->remove('auth_user_name');
+      self::$session->remove('auth_user_id');
+      self::$session->remove('auth_logged_in');
+      self::$session->regenerate();
+      return true;
   }
 
 
@@ -97,8 +109,8 @@ class Auth implements IAuthenticate {
    */
   public static function check()
   {
-    if(isset($_SESSION['auth_logged_in']) &&
-      $_SESSION['auth_logged_in'] == true) {
+    if(self::$session->check('auth_logged_in') &&
+      true == self::$session->check('auth_logged_in')) {
       return true;
     } else {
       return false;
@@ -128,7 +140,7 @@ class Auth implements IAuthenticate {
   public static function user()
   {
     if(self::check()) {
-      $id = $_SESSION['auth_user_id'];
+      $id = self::$sessopm->get('auth_user_id');
       $model = new ModelUser(self::$dbh);
       $user = $model->getUser($id);
       return $user;
@@ -140,7 +152,7 @@ class Auth implements IAuthenticate {
   public static function group($group)
   {
       if(self::check()) {
-        if (in_array($group, $_SESSION['ugroups'])) {
+        if (in_array($group, self::$session->get('ugroups'))) {
           return true;
         } else {
           return false;
@@ -161,10 +173,12 @@ class Auth implements IAuthenticate {
    */
   private static function setUserSessionInfo($user)
   {
-      $_SESSION['auth_logged_in'] = true;
-      $_SESSION['auth_user_name'] = $user->name;
-      $_SESSION['auth_user_id'] = $user->id;
-      $_SESSION['ugroups'] = json_decode($user->ugroups);
+      self::$session->set('auth_logged_in', true);
+      self::$session->set('auth_user_name', $user->name);
+      self::$session->set('auth_user_id', $user->id);
+      self::$session->set('ugroups', json_decode($user->ugroups));
+      self::$session->regenerate();
+      return true;
   }
 
 
