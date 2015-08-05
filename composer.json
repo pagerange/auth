@@ -10,7 +10,9 @@
         }
     ],
     "require": {},
-    "require-dev": {},
+    "require-dev": {
+      "pagerange/session" : "dev-master"
+      },
     "autoload": {
         "psr-0" : {
           "Pagerange\\Auth" : "src"
