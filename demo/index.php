@@ -2,22 +2,16 @@
 
 require 'inc/config.php';
 
-use Pagerange\Auth\Auth;
-use AdamWathan\Form\FormBuilder;
-
-$dbh  = new \PDO('sqlite:../files/test_db.sqlite');
-
-Auth::init($dbh);
+use \Pagerange\Auth\Auth;
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		Auth::login($_POST['name'], $_POST['password']);
 }
 
-
 if(Auth::check()) {
 
-	header('Location: profile.php');
+	// header('Location: profile.php');
 
 }
 
@@ -29,7 +23,11 @@ include 'inc/header.php';
 
 <div class="container">
 
-	<h1>You must be logged in to use this site</h1>
+    <?=Auth::$flash->flash()?>
+
+    <?php if(Auth::guest()) : ?>
+
+	<h1>Login</h1>
 
     <p>Working credentials:  steve@mydomain.com | mypass</p>
 
@@ -49,6 +47,16 @@ include 'inc/header.php';
       </form>
 
 </div>
+
+    <?php else : ?>
+
+        <h1>Welcome</h1>
+
+        <h2>Welcome to our website!  Please explore!</h2>
+
+    <?php endif; ?>
+
+    </div>
 
 	</body>
 </html>

@@ -8,7 +8,6 @@
  * @updated 2015-08-03
  */
 
-
 namespace Pagerange\Auth;
 
 use \Pagerange\Session\Session;
@@ -22,7 +21,7 @@ class Auth implements IAuthenticate {
    */
     private static $dbh = null;
     private static $session;
-    private static $flash;
+    public static $flash;
 
 
   /**
@@ -38,11 +37,8 @@ class Auth implements IAuthenticate {
            self::$dbh = $dbh;
        }
 
-       self::$session = new \Pagerange\Session\Session();
-       var_dump(self::$session);
-       die;
-       self::$flash = new Flash(self::$session);
-
+       static::$session = new \Pagerange\Session\Session();
+       static::$flash = new \Pagerange\Session\Flash(static::$session);
        return true;
 
   }
@@ -57,17 +53,16 @@ class Auth implements IAuthenticate {
    */
   public static function login($username, $password)
   {
-
-    self::logout();
-
     $model = new ModelUser(self::$dbh);
 
     $user = $model->login($username, $password);
 
     if(isset($user->id)) {
       self::setUserSessionInfo($user);
+      self::$flash->message('You are now logged in', ['alert-success']);
       return true;
     } else {
+      self::$flash->message('<strong>Incorrect login</strong> Please try again.', ['alert-danger']);
       return false;
     }
   }
@@ -78,11 +73,14 @@ class Auth implements IAuthenticate {
    */
   public static function logout()
   {
-      self::$session->remove('auth_user_name');
-      self::$session->remove('auth_user_id');
-      self::$session->remove('auth_logged_in');
-      self::$session->regenerate();
-      return true;
+      if(self::check()) {
+          static::$session->remove('auth_user_name');
+          static::$session->remove('auth_user_id');
+          static::$session->remove('auth_logged_in');
+          // static::$session->regenerate();
+          self::$flash->message('You are now logged out', ['alert-warning']);
+          return true;
+      }
   }
 
 
@@ -99,6 +97,7 @@ class Auth implements IAuthenticate {
         $id = $model->save($user);
         $user = $model->getUser($id);
         self::setUserSessionInfo($user);
+        self::$flash->message('<strong>Congratulations</strong>, you successfully registered!', ['alert-success']);
         return true;
     }
 
@@ -109,8 +108,9 @@ class Auth implements IAuthenticate {
    */
   public static function check()
   {
-    if(self::$session->check('auth_logged_in') &&
-      true == self::$session->check('auth_logged_in')) {
+
+    if(static::$session->check('auth_logged_in') &&
+      true == static::$session->check('auth_logged_in')) {
       return true;
     } else {
       return false;
@@ -140,7 +140,7 @@ class Auth implements IAuthenticate {
   public static function user()
   {
     if(self::check()) {
-      $id = self::$sessopm->get('auth_user_id');
+      $id = static::$session->get('auth_user_id');
       $model = new ModelUser(self::$dbh);
       $user = $model->getUser($id);
       return $user;
@@ -152,7 +152,7 @@ class Auth implements IAuthenticate {
   public static function group($group)
   {
       if(self::check()) {
-        if (in_array($group, self::$session->get('ugroups'))) {
+        if (in_array($group, static::$session->get('ugroups'))) {
           return true;
         } else {
           return false;
@@ -173,11 +173,11 @@ class Auth implements IAuthenticate {
    */
   private static function setUserSessionInfo($user)
   {
-      self::$session->set('auth_logged_in', true);
-      self::$session->set('auth_user_name', $user->name);
-      self::$session->set('auth_user_id', $user->id);
-      self::$session->set('ugroups', json_decode($user->ugroups));
-      self::$session->regenerate();
+      static::$session->set('auth_logged_in', true);
+      static::$session->set('auth_user_name', $user->name);
+      static::$session->set('auth_user_id', $user->id);
+      static::$session->set('ugroups', json_decode($user->ugroups));
+      // static::$session->regenerate();
       return true;
   }
 

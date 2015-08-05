@@ -8,4 +8,11 @@ session_start();
 
 include('../../../autoload.php');
 
+use \Pagerange\Auth\Auth;
+
+$dbh  = new \PDO('sqlite:../files/test_db.sqlite');
+
+Auth::init($dbh);
+
+
 

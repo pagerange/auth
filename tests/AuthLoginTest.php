@@ -15,7 +15,7 @@ class AuthLoginTest extends PHPUnit_Framework_TestCase
 
     public function testLoginGood()
     {
-        $login = auth::login('steve@mydomain.com', 'mypass');
+        $login = Auth::login('steve@mydomain.com', 'mypass');
         $this->assertequals(true, true);
     }
  

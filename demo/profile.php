@@ -21,6 +21,8 @@ require 'inc/header.php';
 
 <div class="container">
 
+	<?=Auth::$flash->flash()?>
+
 		<h1>Profile</h1>
 
 		<h2>Your account info</h2>
