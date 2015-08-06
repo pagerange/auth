@@ -57,11 +57,11 @@ $dbh = new \PDO('your connection info here');
 
 Auth::init($dbh); // PDO object required
 
-Auth::login($username, $password); // returns true or false.
+Auth::login($username, $password); // returns true or false. Sets Flash message.
 
-Auth::register($user) // pass in a user object.
+Auth::register($user) // pass in a user object.  Sets Flash message on success.
 
-Auth::logout(void); // logs out the current user
+Auth::logout(void); // logs out the current user.  Sets Flash message
 
 Auth::check(void); // returns true or false if current user is logged in
 
