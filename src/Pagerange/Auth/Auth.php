@@ -38,7 +38,7 @@ class Auth implements IAuthenticate
     {
         static::$dbh = $dbh;
         static::$session = new Session($testing);
-        static::$flash = new Flash(static::$session);
+        static::$flash = new Flash($testing);
         return true;
     }
 
