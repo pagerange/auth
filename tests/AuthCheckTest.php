@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+ob_start();
+
 require '../../../autoload.php';
 
 use Pagerange\Auth\Auth;
