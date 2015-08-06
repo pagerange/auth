@@ -52,15 +52,13 @@ use Pagerange\Session\Session;
 use Pagerange\Session\Flash;
 use Pagerange\Auth\Auth;
 
-$dbh = new PDO('your connection info here');
+$dbh = new \PDO('your connection info here');
 
-Auth::init($session, $flash, $dbh); // three parameters must always be passed
+Auth::init($dbh); // PDO object required
 
 Auth::login($username, $password); // returns true or false.
 
-Auth::register(['name', 'plain-text-password']) // registers user, minimum username and password.
-  
-// Note: registration($array) can dynamicaly accept as many fields as you like.
+Auth::register($user) // pass in a user object.
 
 Auth::logout(void); // logs out the current user
 
@@ -72,6 +70,34 @@ Auth::group('string'); // returns true or false if user is member of group 'stri
 
 Auth::user(void); // returns all user information from the auth_user table, but not the password
 
+```
+
+**Note:** when using Auth::register($user).  The $user object must have, at a minimum, two properties:
+
+* name // the username required for login
+* password // the plain text password to be hashed
+
+However, the $user object can contain as many fields as are in your auth_user table.
+
+Both the following will work:
+
+```php
+// Minimal user object
+$user->name = 'steve@mydomain.com';
+$user->password = 'mypass';
+```
+
+```php
+// More fleshed out user object
+$user->name = 'steve@mydomain.com';
+$user->password = 'mypass';
+$user->first_name = 'Steve';
+$user->last_name = 'Garbonzo';
+$user->street_1 = '123 Any Street';
+$user->ugroups = ['user','editor']'
+
+// etc., etc., etc...
+// so long as additional fields are in your auth_user table
 ```
 
 ### Demo
