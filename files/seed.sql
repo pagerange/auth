@@ -6,7 +6,7 @@ CREATE TABLE auth_user (
 	id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	name VARCHAR(255) NOT null,
 	password VARCHAR(255) NOT NULL,
-  ugroups VARCHAR(1000) NOT NULL DEFAULT '["user"]',
+	ugroups VARCHAR(1000) NOT NULL DEFAULT '["user"]',
 	created_at TIMESTAMP NOT NULL DEFAULT current_timestamp
 );
 
@@ -21,19 +21,19 @@ VALUES
 ## Sample scheme with additional fields
 
 CREATE TABLE auth_user (
-id BIGINT PRIMARY KEY AUTO_INCREMENT,
-name VARCHAR(255) NOT NULL,
-password VARCHAR(255) NOT NULL,
-ugroups VARCHAR(1000) NOT NULL DEFAULT '["user"]',
-first_name VARCHAR(255),
-last_name VARCHAR(255),
-street_1 VARCHAR(255),
-street_2 VARCHAR(255),
-city VARCHAR(255),
-region VARCHAR(255),
-postal_code VARCHAR(255),
-phone VARCHAR(255),
-created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+	id BIGINT PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(255) NOT NULL,
+	password VARCHAR(255) NOT NULL,
+	ugroups VARCHAR(1000) NOT NULL DEFAULT '["user"]',
+	first_name VARCHAR(255),
+	last_name VARCHAR(255),
+	street_1 VARCHAR(255),
+	street_2 VARCHAR(255),
+	city VARCHAR(255),
+	region VARCHAR(255),
+	postal_code VARCHAR(255),
+	phone VARCHAR(255),
+	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 # For sqlite
@@ -44,7 +44,7 @@ CREATE TABLE auth_user (
 	id BIGINT PRIMARY KEY NOT NULL AUTOINCREMENT,
 	name VARCHAR(255) NOT null,
 	password VARCHAR(255) NOT NULL,
-  ugroups VARCHAR(1000) NOT NULL DEFAULT '["user"]',
+	ugroups VARCHAR(1000) NOT NULL DEFAULT '["user"]',
 	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
