@@ -1,10 +1,12 @@
 <?php
 
-if(session_status !=  PHP_SESSION_ACTIVE) {
+if(session_status() !=  PHP_SESSION_ACTIVE) {
     session_start();
     ob_start();
 }
 
+use Pagerange\Session\Session;
+use Pagerange\Session\Flash;
 use Pagerange\Auth\Auth;
 
 class AuthCheckTest extends PHPUnit_Framework_TestCase
@@ -13,7 +15,9 @@ class AuthCheckTest extends PHPUnit_Framework_TestCase
     public static function setUpBeforeClass()
     {
         $dbh = new \PDO('sqlite:./test_db.sqlite');
-        Auth::init($dbh);
+        $session = new Session();
+        $flash = new Flash($session);
+        Auth::init($session, $flash, $dbh);
         Auth::login('steve@mydomain.com', 'mypass');
     }
 

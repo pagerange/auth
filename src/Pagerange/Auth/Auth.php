@@ -11,6 +11,7 @@
 
 namespace Pagerange\Auth;
 
+use \Pagerange\Session\ISession;
 use \Pagerange\Session\Session;
 use \Pagerange\Session\Flash;
 
@@ -33,14 +34,14 @@ class Auth implements IAuthenticate
      * @param \PDO|null $dbh
      * @return \PDO
      */
-    public static function init(\PDO $dbh = null)
+    public static function init(ISession $session, Flash $flash, \PDO $dbh = null)
     {
         if (!is_null($dbh)) {
             self::$dbh = $dbh;
         }
 
-        static::$session = new Session();
-        static::$flash = new Flash(static::$session);
+        static::$session = $session;
+        static::$flash = $flash;
         return true;
     }
 
@@ -78,7 +79,7 @@ class Auth implements IAuthenticate
             static::$session->remove('auth_user_name');
             static::$session->remove('auth_user_id');
             static::$session->remove('auth_logged_in');
-            static::$session->regenerate();
+            // static::$session->regenerate();
             self::$flash->message('You are now logged out', ['alert-warning']);
             return true;
         }
@@ -178,7 +179,7 @@ class Auth implements IAuthenticate
         static::$session->set('auth_user_name', $user->name);
         static::$session->set('auth_user_id', $user->id);
         static::$session->set('ugroups', json_decode($user->ugroups));
-        static::$session->regenerate();
+        // static::$session->regenerate();
         return true;
     }
 

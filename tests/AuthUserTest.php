@@ -1,15 +1,17 @@
 <?php
-
+ob_start();
+use Pagerange\Session\Session;
+use Pagerange\Session\Flash;
 use Pagerange\Auth\Auth;
-use Pagerange\Auth\ModelUser;
 
 class AuthUserTest extends PHPUnit_Framework_TestCase
 {
     
     public static function setUpBeforeClass()
-    {
-        $dbh = new \pdo('sqlite:./test_db.sqlite');
-        Auth::init($dbh);
+    {$dbh = new \PDO('sqlite:./test_db.sqlite');
+        $session = new Session();
+        $flash = new Flash($session);
+        Auth::init($session, $flash, $dbh);
         Auth::login('steve@mydomain.com', 'mypass');
     }
 
@@ -36,7 +38,7 @@ class AuthUserTest extends PHPUnit_Framework_TestCase
 
     public function testAuthUserPasswordDoesNotExist()
     {
-        $this->assertNull(Auth::user()->password, 'Password should not be stored in user object');
+        $this->assertTrue(!isset(Auth::user()->password), 'Password should not be stored in user object');
     }
     
     public function testAuthUserNotAvailableAfterLogout()
