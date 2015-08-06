@@ -1,7 +1,13 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<phpunit>
-  <testsuite name='Auth Test Suite'>
-    <directory suffix='Test.php'>./</directory>
-    <log type="testdox-html" target="test-results.html" />
-  </testsuite>
+<?xml version="1.0"?>
+<phpunit bootstrap="../../../autoload.php">
+    <testsuites>
+        <testsuite name="Auth Class Tests">
+            <file>AuthCheckTest.php</file>
+            <file>AuthLoginTest.php</file>
+            <file>AuthUserTest.php</file>
+        </testsuite>
+    </testsuites>
+    <logging>
+        <log type="testdox-text" target="test_results.txt" />
+    </logging>
 </phpunit>

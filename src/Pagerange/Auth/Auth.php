@@ -39,8 +39,8 @@ class Auth implements IAuthenticate
             self::$dbh = $dbh;
         }
 
-        static::$session = new \Pagerange\Session\Session();
-        static::$flash = new \Pagerange\Session\Flash(static::$session);
+        static::$session = new Session();
+        static::$flash = new Flash(static::$session);
         return true;
     }
 

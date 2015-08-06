@@ -1,5 +1,4 @@
 <?php
-require '../../../autoload.php';
 
 use Pagerange\Auth\Auth;
 use Pagerange\Auth\ModelUser;
@@ -7,40 +6,46 @@ use Pagerange\Auth\ModelUser;
 class AuthLoginTest extends PHPUnit_Framework_TestCase
 {
     
-    public function setUp()
+    public static function setUpBeforeClass()
     {
         $dbh = new \pdo('sqlite:./test_db.sqlite');
         Auth::init($dbh);
     }
 
+    public static function tearDownAfterClass()
+    {
+        unset($dbh);
+    }
+
     public function testLoginGood()
     {
         $login = Auth::login('steve@mydomain.com', 'mypass');
-        $this->assertequals(true, true);
+        $this->assertTrue($login, 'Login should be successful');
     }
  
     public function testLoginBadPassword()
     {
         $login = auth::login('steve@mydomain.com', 'badpass');
-        $this->assertequals(false, false);
+        $this->assertFalse($login, 'Login should fail with a bad password');
     }
 
     public function testLoginBadEmail()
     {
         $login = auth::login('steve@hotmail.com', 'mypass');
-        $this->assertequals(false, false);
+        $this->assertFalse($login, 'Login should fail with a bad username');
     }
 
     public function testLoginEmptyEmail()
     {
         $login = auth::login('', 'mypass');
-        $this->assertequals(false, false);
+        $this->assertFalse($login, 'Login should fail with an empty username');
     }
 
     public function testLoginEmptyPassword()
     {
         $login = auth::login('steve@mydomain.com', '');
-        $this->assertequals(false, false);
+        $this->assertFalse($login, 'Login should fail with an empty password');
     }
 
+// end test class
 }

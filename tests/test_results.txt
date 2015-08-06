@@ -1,0 +1,21 @@
+AuthCheck
+ [x] Session exists
+ [x] Check is logged in
+ [x] User is not guest
+ [x] Check is not logged in
+ [x] User is guest
+
+AuthLogin
+ [x] Login good
+ [x] Login bad password
+ [x] Login bad email
+ [x] Login empty email
+ [x] Login empty password
+
+AuthUser
+ [x] Auth user object exists
+ [x] Auth user name
+ [x] Auth user id
+ [x] Auth user password does not exist
+ [x] Auth user not available after logout
+

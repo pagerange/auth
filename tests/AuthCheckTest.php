@@ -1,49 +1,52 @@
 <?php
 
-session_start();
-ob_start();
-
-require '../../../autoload.php';
+if(session_status !=  PHP_SESSION_ACTIVE) {
+    session_start();
+    ob_start();
+}
 
 use Pagerange\Auth\Auth;
-
-if(!isset($_SESSION)) $_SESSION = [];
 
 class AuthCheckTest extends PHPUnit_Framework_TestCase
 {
 
-    public function setUp()
+    public static function setUpBeforeClass()
     {
         $dbh = new \PDO('sqlite:./test_db.sqlite');
         Auth::init($dbh);
         Auth::login('steve@mydomain.com', 'mypass');
     }
 
+    public static function tearDownAfterClass()
+    {
+        unset($dbh);
+    }
+
     public function testSessionExists()
     {
-       $this->assertequals(5, count($_SESSION), "Session should have some vars.");
+       $this->assertEquals(5, count($_SESSION), "Session should have some vars.");
     }
 
     public function testCheckIsLoggedIn()
     {
-        $this->assertequals(true, Auth::check(), "User should be logged in"); 
+        $this->assertTrue(Auth::check(), "User should be logged in");
     }
 
     public function testUserIsNotGuest()
     {
-        $this->assertequals(false, Auth::guest(), "User should not be a guest");
+        $this->assertFalse(Auth::guest(), "User should not be a guest");
     }
 
     public function testCheckIsNotLoggedIn()
     {
        Auth::logout();
-       $this->assertequals(false, Auth::check(), "User should not be logged in"); 
+       $this->assertFalse(Auth::check(), "User should not be logged in");
     }
 
     public function testUserIsGuest()
     {
        Auth::logout();
-       $this->assertequals(true, Auth::guest(), "User should be a guest");
+       $this->assertTrue(Auth::guest(), "User should be a guest");
     }
 
 }
