@@ -1,6 +1,6 @@
 # Auth
 
-## Basic PHP authentication is a static class
+## Basic PHP authentication using static methods
 
 This class provides basic authentication and can be dropped into virtually any
 project requiring simple authentication.  Why another Authentication class?
@@ -28,7 +28,7 @@ CREATE TABLE auth_user (
 	id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	name VARCHAR(255) NOT null,
 	password VARCHAR(255) NOT NULL,
-	ugroups text NOT NULL DEFAULT '["user"]'",
+	ugroups VARCHAR(1000) NOT NULL DEFAULT '["user"]',
 	created_at TIMESTAMP NOT NULL DEFAULT current_timestamp
 );
 ```
