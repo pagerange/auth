@@ -51,8 +51,6 @@ Usage is simple:
 
 ```php
 
-use Pagerange\Session\Session;
-use Pagerange\Session\Flash;
 use Pagerange\Auth\Auth;
 
 $dbh = new \PDO('your connection info here');
