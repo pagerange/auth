@@ -2,7 +2,10 @@
 
 ## Basic PHP authentication is a static class
 
-This class provides basic authentication and can be dropped into virtually any project requiring simple authentication.  Why another Authentication class?  I wanted something simple to implement authentication on some one-off projecs.  Also, much of what is in here is used in course instruction.
+This class provides basic authentication and can be dropped into virtually any
+project requiring simple authentication.  Why another Authentication class?
+I wanted something simple to implement authentication on some one-off projecs.
+Also, much of what is in here is used in course instruction.
 
 ### Dependencies
 
@@ -68,11 +71,12 @@ Auth::guest(void); // returns true or false if current user is a guest (unauthen
 
 Auth::group('string'); // returns true or false if user is member of group 'string'
 
-Auth::user(void); // returns all user information from the auth_user table, but not the password
+Auth::user(void); // returns all user information except the password
 
 ```
 
-**Note:** when using Auth::register($user).  The $user object must have, at a minimum, two properties:
+**Note:** when using Auth::register($user).  The $user object must have,
+at a minimum, two properties:
 
 * name // the username required for login
 * password // the plain text password to be hashed
@@ -127,9 +131,21 @@ The MIT License (MIT)
 
 Copyright (c) 2015  by Steve George <steve@pagerange.com>
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: 
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in the
+Software without restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
+Software, and to permit persons to whom the Software is furnished to do so, subject
+ to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.  
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
 
