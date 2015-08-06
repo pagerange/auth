@@ -10,7 +10,7 @@ class AuthLoginTest extends PHPUnit_Framework_TestCase
     public static function setUpBeforeClass()
     {
         $dbh = new \PDO('sqlite:./test_db.sqlite');
-        $session = new Session();
+        $session = new Session(true);
         $flash = new Flash($session);
         Auth::init($session, $flash, $dbh);
     }

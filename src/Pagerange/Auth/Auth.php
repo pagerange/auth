@@ -14,6 +14,7 @@ namespace Pagerange\Auth;
 use \Pagerange\Session\ISession;
 use \Pagerange\Session\Session;
 use \Pagerange\Session\Flash;
+use Pagerange\Session\SessionException;
 
 class Auth implements IAuthenticate
 {
@@ -79,7 +80,7 @@ class Auth implements IAuthenticate
             static::$session->remove('auth_user_name');
             static::$session->remove('auth_user_id');
             static::$session->remove('auth_logged_in');
-            // static::$session->regenerate();
+            static::$session->regenerate();
             self::$flash->message('You are now logged out', ['alert-warning']);
             return true;
         }
@@ -175,11 +176,12 @@ class Auth implements IAuthenticate
      */
     private static function setUserSessionInfo($user)
     {
+
         static::$session->set('auth_logged_in', true);
         static::$session->set('auth_user_name', $user->name);
         static::$session->set('auth_user_id', $user->id);
         static::$session->set('ugroups', json_decode($user->ugroups));
-        // static::$session->regenerate();
+        static::$session->regenerate();
         return true;
     }
 
