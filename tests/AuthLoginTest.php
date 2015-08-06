@@ -1,18 +1,15 @@
 <?php
 ob_start();
-use Pagerange\Session\Session;
-use Pagerange\Session\Flash;
-use Pagerange\Auth\Auth;
+
+use \Pagerange\Auth\Auth;
 
 class AuthLoginTest extends PHPUnit_Framework_TestCase
 {
     
     public static function setUpBeforeClass()
     {
-        $dbh = new \PDO('sqlite:./test_db.sqlite');
-        $session = new Session(true);
-        $flash = new Flash($session);
-        Auth::init($session, $flash, $dbh);
+        // Second parameter ensures session is in 'testing' mode
+        Auth::init(new \PDO('sqlite:test_db.sqlite'), true);
     }
 
     public static function tearDownAfterClass()

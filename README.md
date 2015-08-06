@@ -48,11 +48,13 @@ Usage is simple:
 
 ```php
 
+use Pagerange\Session\Session;
+use Pagerange\Session\Flash;
 use Pagerange\Auth\Auth;
 
 $dbh = new PDO('your connection info here');
 
-Auth::init($dbh);
+Auth::init($session, $flash, $dbh); // three parameters must always be passed
 
 Auth::login($username, $password); // returns true or false.
 

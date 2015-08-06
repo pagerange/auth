@@ -11,10 +11,8 @@
 
 namespace Pagerange\Auth;
 
-use \Pagerange\Session\ISession;
 use \Pagerange\Session\Session;
 use \Pagerange\Session\Flash;
-use Pagerange\Session\SessionException;
 
 class Auth implements IAuthenticate
 {
@@ -33,16 +31,14 @@ class Auth implements IAuthenticate
      * Sets up a MySQL PDO connection by default, but will
      * accept any kind of PDO connection as a parameter.
      * @param \PDO|null $dbh
-     * @return \PDO
+     * @testing bool Whether session should be in 'testing' mode
+     * @return bool
      */
-    public static function init(ISession $session, Flash $flash, \PDO $dbh = null)
+    public static function init(\PDO $dbh = null, $testing = false)
     {
-        if (!is_null($dbh)) {
-            self::$dbh = $dbh;
-        }
-
-        static::$session = $session;
-        static::$flash = $flash;
+        static::$dbh = $dbh;
+        static::$session = new Session($testing);
+        static::$flash = new Flash(static::$session);
         return true;
     }
 
