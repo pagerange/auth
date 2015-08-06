@@ -1,6 +1,7 @@
 <?php
 
 /**
+ *
  * Exception class for Auth class
  * @author Steve George <steve@glort.com>
  * @version 1.0

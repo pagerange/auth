@@ -1,6 +1,7 @@
 <?php
 
 /**
+ *
  * Authenticate interface
  * Defines methods all Authenticators must provide
  * @author Steve George <steve@glort.com>
@@ -34,4 +35,5 @@ interface IAuthenticate
      */
     public static function user();
 
+// end of interface
 }

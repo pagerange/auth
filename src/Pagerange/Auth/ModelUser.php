@@ -1,6 +1,7 @@
 <?php
 
 /**
+ *
  * User model required by the Auth class
  * Must have, at least: id, name, password
  * @author Steve George <steve@glort.com>
@@ -25,7 +26,7 @@ class ModelUser
      */
     public function __construct(\PDO $dbh)
     {
-      $this->dbh = $dbh;
+        $this->dbh = $dbh;
     }
 
 
@@ -37,14 +38,15 @@ class ModelUser
      * @param $password
      * @return bool
      */
-    public function login($name, $password) {
+    public function login($name, $password)
+    {
         $user = $this->getuserByName($name);
-        if($user) {
+        if ($user) {
             return $this->passwordsMatch($password, $user);
         } else {
             return false;
         }
-   }
+    }
 
 
     /**
@@ -52,12 +54,12 @@ class ModelUser
      * @param int $id
      * @return mixed
      */
-       public function getUser($id)
+    public function getUser($id)
     {
-       $query = 'SELECT * FROM auth_user WHERE id = :id';
-       $user = $this->executeQuery($query, [':id' => $id], \PDO::FETCH_OBJ);
-       unset($user->password);
-       return $user;
+        $query = 'SELECT * FROM auth_user WHERE id = :id';
+        $user = $this->executeQuery($query, [':id' => $id], \PDO::FETCH_OBJ);
+        unset($user->password);
+        return $user;
     }
 
 
@@ -69,8 +71,7 @@ class ModelUser
      */
     private function passwordsMatch($password, $user)
     {
-        if(password_verify($password, $user->password))
-        {
+        if (password_verify($password, $user->password)) {
             return $user;
         } else {
             return false;
@@ -104,7 +105,7 @@ class ModelUser
      * @param int $result_type
      * @return mixed
      */
-    private function executeQuery($query, $params = [], $result_type)
+    private function executeQuery($query, $params = [], $result_type = \PDO::FETCH_ARRAY)
     {
         if (!$statement = $this->dbh->prepare($query)) {
             throw new AuthException(print_r($this->dbh->errorInfo()));
@@ -128,7 +129,7 @@ class ModelUser
     private function getParams($user)
     {
         $params = [];
-        foreach($user as $key => $value) {
+        foreach ($user as $key => $value) {
             $params[':' . $key] = $value;
         }
         return $params;
@@ -157,7 +158,7 @@ class ModelUser
     private function getQueryFields(\stdClass $user)
     {
         $fields = '';
-        foreach($user as $key => $value) {
+        foreach ($user as $key => $value) {
             $fields .= $key . ',';
         }
         $trimmed_fields = rtrim($fields, ',');
@@ -173,7 +174,7 @@ class ModelUser
     private function getParamsList(\stdClass $user)
     {
         $params = '';
-        foreach($user as $key => $value) {
+        foreach ($user as $key => $value) {
             $params .= ':' . $key . ',';
         }
         $trimmed_params = rtrim($params, ',');
@@ -202,4 +203,5 @@ class ModelUser
         return $this->executeQuery($query, [':name' => $name], \PDO::FETCH_OBJ);
     }
 
-} // End of ModelUsel Class
+// End of ModelUsel Class
+}

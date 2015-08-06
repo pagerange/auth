@@ -11,7 +11,7 @@ if(Auth::guest()) {
 
 if(!Auth::group('superuser')) {
 	http_response_code(403);
-	die('403 - Forbidden - You are not authorized to view this resource');
+	die('<h1>403 Forbidden</h1><h2>You are not authorized to access this resource</h2>');
 }
 
 $title = 'Admininistration';
