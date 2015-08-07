@@ -1,6 +1,6 @@
 # Auth
 
-## Basic PHP authentication using static methods
+## Basic PHP authentication class
 
 This class provides basic authentication and can be dropped into virtually any
 project requiring simple authentication.  Why another Authentication class?
@@ -44,6 +44,8 @@ CREATE TABLE auth_user (
 * authentication check
 * group check (by default, one group is set in the database)
 * user object access containing all fields except password
+* user profile update
+* user password change
 
 ### Usage
 
@@ -60,6 +62,10 @@ Auth::init($dbh); // PDO object required
 Auth::login($username, $password); // returns true or false. Sets Flash message.
 
 Auth::register($user) // pass in a user object.  Sets Flash message on success.
+
+Auth::update($user) // pass in a user object.  Sets Flash message on success.
+
+Auth::changePassword($password) // pass in a plain text password.  Sets Flash message on success.
 
 Auth::logout(void); // logs out the current user.  Sets Flash message
 
@@ -110,8 +116,6 @@ A simple demo app can be viewed here:
 
 ### To Do
 
-* Add ability to update auth_user table
-* Add ability to change password
 * Add ability to reset forgotten password
 
 
@@ -119,7 +123,7 @@ A simple demo app can be viewed here:
 
 [Auth Github issues page](https://github.com/pagerange/auth/issues/)
 
-I can provide basic support, and will accept feature requests.  
+I can provide basic support, and will accept feature requests.
 
 Also, please feel free to contribute.
 

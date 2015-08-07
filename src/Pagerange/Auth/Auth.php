@@ -29,8 +29,6 @@ class Auth implements IAuthenticate
 
     /**
      * Initialize and store a database handle in the class
-     * Sets up a MySQL PDO connection by default, but will
-     * accept any kind of PDO connection as a parameter.
      * @param \PDO|null $dbh
      * @testing bool Whether session should be in 'testing' mode
      * @return bool
@@ -56,7 +54,7 @@ class Auth implements IAuthenticate
     {
     		// Logged in user's can't login again.
     		if(self::check()){
-    			self::$flash->message(self::$config['login_fail_message'], self::$config['login_fail_class']);
+                self::setFlash('login_fail');
     			return false;
     		}
 
@@ -66,10 +64,10 @@ class Auth implements IAuthenticate
 
         if (isset($user->id)) {
             self::setUserSessionInfo($user);
-            self::$flash->message(self::$config['login_success_message'], self::$config['login_success_class']);
+            self::setFlash('login_success');
             return true;
         } else {
-            self::$flash->message(self::$config['login_fail_message'], self::$config['login_fail_class']);
+            self::setFlash('login_fail');
             return false;
         }
     }
@@ -78,33 +76,42 @@ class Auth implements IAuthenticate
     {
     	  $model = new ModelUser(self::$dbh);
     	  if($model->changePassword(Auth::user()->id, $password)) {
-    	  	self::$flash->message(self::$config['change_password_success_message'],
-    	  		self::$config['change_password_success_class']);
-    	  		return true;
+            self::setFlash('change_password_success');
+            return true;
       	} else {
-      		self::$flash->message(self::$config['change_password_fail_message'],
-    	  		self::$config['change_password_fail_class']);
+      		self::setFlash('change_password_fail');
     	  		return false;
       	}
 
     }
 
     /**
-     * Log out user by clearing stored $_SESSION values
+     * Log out user
      * @return bool
      */
     public static function logout()
     {
         if (self::check()) {
-            static::$session->remove('auth_user_name');
-            static::$session->remove('auth_user_id');
-            static::$session->remove('auth_logged_in');
-            static::$session->regenerate();
-            self::$flash->message(self::$config['logout_success_message'], self::$config['logout_success_class']);
+            self::wipeSession();
+            self::setFlash('logout_success');
             return true;
         } else {
-        		self::$flash->message(self::$config['logout_fail_message'], self::$config['logout_fail_class']);
+        	self::setFlash('logout_fail');
         }
+    }
+
+
+    /**
+     * Wipe session.
+     * @return bool
+     */
+    private function wipeSession()
+    {
+        static::$session->remove('auth_user_name');
+        static::$session->remove('auth_user_id');
+        static::$session->remove('auth_logged_in');
+        static::$session->regenerate();
+        return true;
     }
 
 
@@ -125,10 +132,10 @@ class Auth implements IAuthenticate
         if($id = $model->save($user)) {
         	$user = $model->getUser($id);
         	self::setUserSessionInfo($user);
-        	self::$flash->message(self::$config['registration_success_message'], self::$config['registration_success_class']);
+        	self::setFlash('registration_success');
         	return true;
         } else {
-        	self::$flash->message(self::$config['registration_fail_message'], self::$config['registration_fail_class']);
+        	self::setFlash('registration_fail');
         	return false;
         }
     }
@@ -137,10 +144,10 @@ class Auth implements IAuthenticate
     {
         $model = new ModelUser(self::$dbh);
         if($updated_user = $model->update($user)) {
-        self::$flash->message(self::$config['update_profile_success_message'], self::$config['update_profile_success_class']);
+        self::setFlash('update_profile_success');
         return $updated_user;
         } else {
-        self::$flash->message(self::$config['update_profile_fail_message'], self::$config['update_profile_fail_class']);
+        self::setFlash('update_profile_fail');
         return $updated_user;
         }
     }
@@ -209,7 +216,6 @@ class Auth implements IAuthenticate
 
     /* PRIVATE HELPER METHODS */
 
-
     /**
      * Sets the user's $_SESSION info once the user has
      * been validated agains the Model
@@ -224,6 +230,18 @@ class Auth implements IAuthenticate
         static::$session->set('ugroups', json_decode($user->ugroups));
         static::$session->regenerate();
         return true;
+    }
+
+    /**
+     * Utility function wraps Flash::message()
+     * @param $message
+     */
+    private static function setFlash($message)
+    {
+        self::$flash->message(
+            self::$config[$message . '_message'],
+            self::$config[$message . '_class']
+        );
     }
 
 // End Auth Class
