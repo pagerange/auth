@@ -96,7 +96,18 @@ class Auth implements IAuthenticate
         $id = $model->save($user);
         $user = $model->getUser($id);
         self::setUserSessionInfo($user);
-        self::$flash->message('<strong>Congratulations</strong>, you successfully registered!', ['alert-success']);
+        self::$flash->message('<strong>Congratulations</strong>You successfully updated this record!', ['alert-success']);
+        return true;
+    }
+
+
+    public static function update(\stdClass $user)
+    {
+        $model = new ModelUser(self::$dbh);
+        $model->update($user);
+        $user = $model->getUser($user->id);
+        self::setUserSessionInfo($user);
+        self::$flash->message('<strong>Update successful!</strong>, you successfully registered!', ['alert-success']);
         return true;
     }
 

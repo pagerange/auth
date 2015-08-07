@@ -79,7 +79,6 @@ class ModelUser
     }
 
 
-
     /**
      * Save a user object as a record in the database
      * @param $user
@@ -90,9 +89,18 @@ class ModelUser
     {
         $user->password = $this->hashPassword($user->password);
         $params = $this->getParams($user);
-        $query = $this->getQuery($user);
+        $query = $this->getInsertQuery($user);
         $this->executeQuery($query, $params, \PDO::FETCH_OBJ);
         return $this->dbh->lastInsertId();
+    }
+
+
+    public function update($user)
+    {
+        $params = $this->getParams($user);
+        $query = $this->getUpdateQuery($user);
+        $this->executeQuery($query, $params, \PDO::FETCH_OBJ);
+        die;
     }
 
 
@@ -107,12 +115,13 @@ class ModelUser
      */
     private function executeQuery($query, $params = [], $result_type = \PDO::FETCH_ARRAY)
     {
+
+
         if (!$statement = $this->dbh->prepare($query)) {
             throw new AuthException(print_r($this->dbh->errorInfo()));
         }
 
         if (!$statement->execute($params)) {
-            var_dump($this->dbh->errorInfo());
             throw new AuthException(print_r($this->dbh->errorInfo()));
         }
 
@@ -141,11 +150,24 @@ class ModelUser
      * @param $user
      * @return string
      */
-    private function getQuery($user)
+    private function getInsertQuery($user)
     {
         $fields = $this->getQueryFields($user);
         $params = $this->getParamsList($user);
         $query = "INSERT INTO auth_user ($fields) VALUES ($params)";
+        return $query;
+    }
+
+    private function getUpdateQuery($user)
+    {
+        $id = $user->id;
+        unset($user->id);
+        $update = '';
+        foreach ($user as $key => $value) {
+            $update .= "$key = :$key, ";
+        }
+        $update = rtrim($update, " ,");
+        $query = "UPDATE auth_user set $update WHERE id = :id";
         return $query;
     }
 
