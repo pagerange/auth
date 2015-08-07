@@ -87,6 +87,9 @@ class ModelUser
      */
     public function save($user)
     {
+    		if($this->isDupe($user->name)) {
+    			return false;
+    		}
         $user->password = $this->hashPassword($user->password);
         $params = $this->getParams($user);
         $query = $this->getInsertQuery($user);
@@ -106,6 +109,22 @@ class ModelUser
 
 
     /* PRIVATE HELPER FUNCTIONS */
+
+
+
+    private function isDupe($name)
+    {
+    	$query = 'SELECT id FROM auth_user WHERE name = :name';
+    	$params = [':name' => $name];
+    	$statement = $this->dbh->prepare($query);
+    	$statement->execute($params);
+			$result = $statement->fetch(\PDO::FETCH_ASSOC);
+			if($result) {
+				return true;
+			} else {
+				return false;
+			}
+    }
 
     /**
      * Execute a query and return the result

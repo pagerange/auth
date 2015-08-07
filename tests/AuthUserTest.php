@@ -16,7 +16,6 @@ class AuthUserTest extends PHPUnit_Framework_TestCase
     public static function tearDownAfterClass()
     {
         unset($dbh);
-        session_destroy();
     }
 
     public function testAuthUserObjectExists()

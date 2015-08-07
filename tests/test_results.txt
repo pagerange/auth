@@ -19,3 +19,10 @@ AuthUser
  [x] Auth user password does not exist
  [x] Auth user not available after logout
 
+AuthRegister
+ [x] Auth user object does not exist
+ [x] Register new user
+
+AuthUpdateProfile
+ [x] Update profile
+

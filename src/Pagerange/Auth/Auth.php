@@ -54,6 +54,12 @@ class Auth implements IAuthenticate
      */
     public static function login($username, $password)
     {
+    		// Logged in user's can't login again.
+    		if(self::check()){
+    			self::$flash->message(static::$config['login_fail_message'], static::$config['login_fail_class']);
+    			return false;
+    		}
+
         $model = new ModelUser(self::$dbh);
 
         $user = $model->login($username, $password);
@@ -95,6 +101,10 @@ class Auth implements IAuthenticate
      */
     public static function register(\stdClass $user)
     {
+    		// Logged in users can't register a new account
+				if(self::check()) {
+					return false;
+				}
         $model = new ModelUser(self::$dbh);
         $user->ugroups = json_encode(["user"]);
         if($id = $model->save($user)) {
