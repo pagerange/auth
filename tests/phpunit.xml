@@ -7,6 +7,7 @@
             <file>AuthUserTest.php</file>
             <file>AuthRegisterTest.php</file>
             <file>AuthUpdateProfileTest.php</file>
+            <file>AuthChangePasswordTest.php</file>
         </testsuite>
     </testsuites>
     <logging>

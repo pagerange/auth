@@ -79,6 +79,25 @@ class ModelUser
     }
 
 
+    public function changePassword($id, $password) {
+					$digest = $this->hashPassword($password);
+					$query = "UPDATE auth_user set password = :digest
+					where id = :id";
+					$params = [
+						':id' => $id,
+						':digest' => $digest
+					];
+					$statement = $this->dbh->prepare($query);
+					if($statement->execute($params)) {
+						return true;
+					}	else {
+						return false;
+					}
+
+
+    }
+
+
     /**
      * Save a user object as a record in the database
      * @param $user

@@ -26,3 +26,6 @@ AuthRegister
 AuthUpdateProfile
  [x] Update profile
 
+AuthChangePassword
+ [x] Change password
+
