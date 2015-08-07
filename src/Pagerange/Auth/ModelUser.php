@@ -97,10 +97,11 @@ class ModelUser
 
     public function update($user)
     {
+    		$id = $user->id;
         $params = $this->getParams($user);
         $query = $this->getUpdateQuery($user);
         $this->executeQuery($query, $params, \PDO::FETCH_OBJ);
-        die;
+				return $this->getUser($id);
     }
 
 

@@ -24,6 +24,7 @@ class Auth implements IAuthenticate
     private static $dbh = null;
     private static $session;
     public static $flash;
+    public static $config;
 
 
     /**
@@ -39,6 +40,7 @@ class Auth implements IAuthenticate
         static::$dbh = $dbh;
         static::$session = new Session($testing);
         static::$flash = new Flash($testing);
+        static::$config = require (__DIR__ . DIRECTORY_SEPARATOR . 'config.php');
         return true;
     }
 
@@ -58,10 +60,10 @@ class Auth implements IAuthenticate
 
         if (isset($user->id)) {
             self::setUserSessionInfo($user);
-            self::$flash->message('You are now logged in', ['alert-success']);
+            self::$flash->message(static::$config['login_success_message'], static::$config['login_success_class']);
             return true;
         } else {
-            self::$flash->message('<strong>Incorrect login</strong> Please try again.', ['alert-danger']);
+            self::$flash->message(static::$config['login_fail_message'], static::$config['login_fail_class']);
             return false;
         }
     }
@@ -77,8 +79,10 @@ class Auth implements IAuthenticate
             static::$session->remove('auth_user_id');
             static::$session->remove('auth_logged_in');
             static::$session->regenerate();
-            self::$flash->message('You are now logged out', ['alert-warning']);
+            self::$flash->message(static::$config['logout_success_message'], static::$config['logout_success_class']);
             return true;
+        } else {
+        		self::$flash->message(static::$config['logout_fail_message'], static::$config['logout_fail_class']);
         }
     }
 
@@ -93,22 +97,27 @@ class Auth implements IAuthenticate
     {
         $model = new ModelUser(self::$dbh);
         $user->ugroups = json_encode(["user"]);
-        $id = $model->save($user);
-        $user = $model->getUser($id);
-        self::setUserSessionInfo($user);
-        self::$flash->message('<strong>Congratulations</strong>You successfully updated this record!', ['alert-success']);
-        return true;
+        if($id = $model->save($user)) {
+        	$user = $model->getUser($id);
+        	self::setUserSessionInfo($user);
+        	self::$flash->message(static::$config['registration_success_message'], static::$config['registration_success_class']);
+        	return true;
+        } else {
+        	self::$flash->message(static::$config['registration_fail_message'], static::$config['registration_fail_class']);
+        	return false;
+        }
     }
-
 
     public static function update(\stdClass $user)
     {
         $model = new ModelUser(self::$dbh);
-        $model->update($user);
-        $user = $model->getUser($user->id);
-        self::setUserSessionInfo($user);
-        self::$flash->message('<strong>Update successful!</strong>, you successfully registered!', ['alert-success']);
-        return true;
+        if($updated_user = $model->update($user)) {
+        self::$flash->message(static::$config['update_profile_success_message'], static::$config['update_profile_success_class']);
+        return $updated_user;
+        } else {
+        self::$flash->message(static::$config['update_profile_fail_message'], static::$config['update_profile_fail_class']);
+        return $updated_user;
+        }
     }
 
 
