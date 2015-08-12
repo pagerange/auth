@@ -12,4 +12,4 @@ the test folder.
 The sqlite3 binary must be globally accessible for this test to run.
 
 
-
+# updated 2015-08-12
