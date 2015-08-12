@@ -8,8 +8,8 @@ class AuthRegisterTest extends PHPUnit_Framework_TestCase
     
     public static function setUpBeforeClass()
     {
-        // Second parameter ensures session is in 'testing' mode
-        Auth::init(new \PDO('sqlite:test_db.sqlite'), true);
+        // pass true to ensure we are in testing mode
+        Auth::init(true);
         // Need to logout existing user so we can start fresh
         Auth::logout();
     }

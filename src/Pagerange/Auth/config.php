@@ -1,6 +1,20 @@
 <?php
 
+// Uncomment and edit for MySQL Connection
+// define ('DB_HOST', 'localhost');
+// define ('DB_NAME', 'auth_user');
+// define ('DB_USER', 'web_user');
+// define ('DB_PASS', 'mypass');
+// define ('DSN', 'mysql');
+
+// Uncomment and edit for Sqlite Connection
+define ('SQLITE_FILE', 'test_db.sqlite');
+define('DSN', 'sqlite');
+
 return [
+
+	// DSN for sqlite
+	'dsn' => DSN,
 
 	// Login Success
 	'login_success_message' => 'You are now logged in!',

@@ -23,8 +23,12 @@ class Auth implements IAuthenticate
      */
     private static $dbh = null;
     private static $session;
-    public static $flash;
-    public static $config;
+    private static $flash;
+    private static $config;
+
+    protected final function __construct(){}
+
+    protected final function __clone(){}
 
 
     /**
@@ -33,12 +37,16 @@ class Auth implements IAuthenticate
      * @testing bool Whether session should be in 'testing' mode
      * @return bool
      */
-    public static function init(\PDO $dbh = null, $testing = false)
+    public static function init($testing = false)
     {
-        static::$dbh = $dbh;
+        self::$config = require_once (__DIR__ . DIRECTORY_SEPARATOR . 'config.php');
+        if('sqlite' == self::$config['dsn']) {
+            self::$dbh = new \PDO('sqlite:' . SQLITE_FILE);
+        } elseif('mysql' == self::$config['dsn']) {
+            self::$dbh = new \PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
+        }
         static::$session = new Session($testing);
         static::$flash = new Flash($testing);
-        self::$config = require (__DIR__ . DIRECTORY_SEPARATOR . 'config.php');
         return true;
     }
 
@@ -76,10 +84,10 @@ class Auth implements IAuthenticate
     {
     	  $model = new ModelUser(self::$dbh);
     	  if($model->changePassword(Auth::user()->id, $password)) {
-            self::setFlash('change_password_success');
+            self::setFlash('update_password_success');
             return true;
       	} else {
-      		self::setFlash('change_password_fail');
+      		self::setFlash('update_password_fail');
     	  		return false;
       	}
 
@@ -105,11 +113,12 @@ class Auth implements IAuthenticate
      * Wipe session.
      * @return bool
      */
-    private function wipeSession()
+    private static function wipeSession()
     {
         static::$session->remove('auth_user_name');
         static::$session->remove('auth_user_id');
         static::$session->remove('auth_logged_in');
+        static::$session->remove('ugroups');
         static::$session->regenerate();
         return true;
     }
