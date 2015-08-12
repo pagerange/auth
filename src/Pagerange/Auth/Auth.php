@@ -23,8 +23,8 @@ class Auth implements IAuthenticate
      */
     private static $dbh = null;
     private static $session;
-    private static $flash;
-    private static $config;
+    public static $flash;
+    public static $config;
 
     protected final function __construct(){}
 
