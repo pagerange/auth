@@ -1,4 +1,4 @@
-# Auth
+# Auth - Dev
 
 ## Basic PHP authentication class
 
