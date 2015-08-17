@@ -18,22 +18,22 @@ interface IAuthenticate
     /**
      * Login the user
      */
-    public static function login($username, $password);
+    public function login($username, $password);
 
     /**
      * Logout the user
      */
-    public static function logout();
+    public function logout();
 
     /**
      * Check user is logged in
      */
-    public static function check();
+    public function check();
 
     /**
      * Return the current user
      */
-    public static function user();
+    public function user();
 
 // end of interface
 }

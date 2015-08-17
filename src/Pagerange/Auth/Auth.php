@@ -11,9 +11,6 @@
 
 namespace Pagerange\Auth;
 
-use \Pagerange\Session\Session;
-use \Pagerange\Session\Flash;
-
 class Auth implements IAuthenticate
 {
 
@@ -21,33 +18,10 @@ class Auth implements IAuthenticate
      * @$dbh \PDO
      * Variable to hold the PDO database handle
      */
-    private static $dbh = null;
-    private static $session;
-    public static $flash;
-    public static $config;
+    private $dbh = null;
 
-    protected final function __construct(){}
-
-    protected final function __clone(){}
-
-
-    /**
-     * Initialize and store a database handle in the class
-     * @param \PDO|null $dbh
-     * @testing bool Whether session should be in 'testing' mode
-     * @return bool
-     */
-    public static function init($testing = false)
-    {
-        self::$config = require_once (__DIR__ . DIRECTORY_SEPARATOR . 'config.php');
-        if('sqlite' == self::$config['dsn']) {
-            self::$dbh = new \PDO('sqlite:' . SQLITE_FILE);
-        } elseif('mysql' == self::$config['dsn']) {
-            self::$dbh = new \PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
-        }
-        static::$session = new Session($testing);
-        static::$flash = new Flash($testing);
-        return true;
+    public function __construct(\PDO $dbh){
+        $this->dbh = $dbh;
     }
 
 
@@ -58,71 +32,47 @@ class Auth implements IAuthenticate
      * @param $password
      * @return bool
      */
-    public static function login($username, $password)
+    public function login($username, $password)
     {
-    		// Logged in user's can't login again.
-    		if(self::check()){
-                self::setFlash('login_fail');
-    			return false;
-    		}
-
-        $model = new ModelUser(self::$dbh);
+        // Logged in user's can't login again.
+        if($this->check()){
+            return false;
+        }
+        $model = new ModelUser($this->dbh);
 
         $user = $model->login($username, $password);
 
         if (isset($user->id)) {
-            self::setUserSessionInfo($user);
-            self::setFlash('login_success');
+            $this->setUserSessionInfo($user);
             return true;
         } else {
-            self::setFlash('login_fail');
             return false;
         }
     }
 
     public function changePassword($password)
     {
-    	  $model = new ModelUser(self::$dbh);
-    	  if($model->changePassword(Auth::user()->id, $password)) {
-            self::setFlash('update_password_success');
+        $model = new ModelUser($this->dbh);
+        if($model->changePassword($this->user()->id, $password)) {
             return true;
-      	} else {
-      		self::setFlash('update_password_fail');
-    	  		return false;
-      	}
-
+        } else {
+            return false;
+        }
     }
 
     /**
      * Log out user
      * @return bool
      */
-    public static function logout()
+    public function logout()
     {
-        if (self::check()) {
-            self::wipeSession();
-            self::setFlash('logout_success');
+        if ($this->check()) {
+            $this->wipeSession();
             return true;
         } else {
-        	self::setFlash('logout_fail');
+            return false;
         }
     }
-
-
-    /**
-     * Wipe session.
-     * @return bool
-     */
-    private static function wipeSession()
-    {
-        static::$session->remove('auth_user_name');
-        static::$session->remove('auth_user_id');
-        static::$session->remove('auth_logged_in');
-        static::$session->remove('ugroups');
-        static::$session->regenerate();
-        return true;
-    }
-
 
     /**
      * Register a new user and save in the database,
@@ -130,33 +80,29 @@ class Auth implements IAuthenticate
      * @param \stdClass $user
      * @return bool
      */
-    public static function register(\stdClass $user)
+    public function register(\stdClass $user)
     {
-    		// Logged in users can't register a new account
-				if(self::check()) {
-					return false;
-				}
-        $model = new ModelUser(self::$dbh);
+        // Logged in users can't register a new account
+        if($this->check()) {
+            return false;
+        }
+        $model = new ModelUser($this->dbh);
         $user->ugroups = json_encode(["user"]);
         if($id = $model->save($user)) {
         	$user = $model->getUser($id);
-        	self::setUserSessionInfo($user);
-        	self::setFlash('registration_success');
+        	$this->setUserSessionInfo($user);
         	return true;
         } else {
-        	self::setFlash('registration_fail');
         	return false;
         }
     }
 
-    public static function update(\stdClass $user)
+    public function update(\stdClass $user)
     {
-        $model = new ModelUser(self::$dbh);
+        $model = new ModelUser($this->dbh);
         if($updated_user = $model->update($user)) {
-        self::setFlash('update_profile_success');
         return $updated_user;
         } else {
-        self::setFlash('update_profile_fail');
         return $updated_user;
         }
     }
@@ -166,11 +112,10 @@ class Auth implements IAuthenticate
      * Check to see if user is logged in
      * @return bool
      */
-    public static function check()
+    public function check()
     {
-
-        if (static::$session->check('auth_logged_in') &&
-            true == static::$session->check('auth_logged_in')) {
+        if (array_key_exists('auth_logged_in', $_SESSION) &&
+            true == $_SESSION['auth_logged_in']) {
             return true;
         } else {
             return false;
@@ -182,26 +127,25 @@ class Auth implements IAuthenticate
      * Check to see if the user is a guest
      * @return bool
      */
-    public static function guest()
+    public function guest()
     {
-        if (!self::check()) {
+        if (!$this->check()) {
             return true;
         } else {
             return false;
         }
     }
 
-
     /**
      * Get a User object.
      * Returns false if the user is not logged in
      * @return bool|mixed
      */
-    public static function user()
+    public function user()
     {
-        if (self::check()) {
-            $id = static::$session->get('auth_user_id');
-            $model = new ModelUser(self::$dbh);
+        if ($this->check()) {
+            $id = $_SESSION['auth_user_id'];
+            $model = new ModelUser($this->dbh);
             $user = $model->getUser($id);
             return $user;
         } else {
@@ -209,10 +153,10 @@ class Auth implements IAuthenticate
         }
     }
 
-    public static function group($group)
+    public function group($group)
     {
-        if (self::check()) {
-            if (in_array($group, static::$session->get('ugroups'))) {
+        if ($this->check()) {
+            if (in_array($group, $_SESSION['ugroups'])) {
                 return true;
             } else {
                 return false;
@@ -223,35 +167,35 @@ class Auth implements IAuthenticate
     }
 
 
-    /* PRIVATE HELPER METHODS */
-
     /**
      * Sets the user's $_SESSION info once the user has
      * been validated agains the Model
      * @param mixed $user
      */
-    private static function setUserSessionInfo($user)
+    private function setUserSessionInfo($user)
     {
-
-        static::$session->set('auth_logged_in', true);
-        static::$session->set('auth_user_name', $user->name);
-        static::$session->set('auth_user_id', $user->id);
-        static::$session->set('ugroups', json_decode($user->ugroups));
-        static::$session->regenerate();
+        $_SESSION['auth_logged_in'] = true;
+        $_SESSION['auth_user_name'] = $user->name;
+        $_SESSION['auth_user_id'] = $user->id;
+        $_SESSION['ugroups'] = json_decode($user->ugroups);
+        session_regenerate_id();
         return true;
     }
 
     /**
-     * Utility function wraps Flash::message()
-     * @param $message
+     * Wipe session clean when logging out user.
+     * @return bool
      */
-    private static function setFlash($message)
+    private function wipeSession()
     {
-        self::$flash->message(
-            self::$config[$message . '_message'],
-            self::$config[$message . '_class']
-        );
+        unset($_SESSION['auth_user_name']);
+        unset($_SESSION['auth_user_id']);
+        unset($_SESSION['auth_logged_in']);
+        unset($_SESSION['ugroups']);
+        session_regenerate_id(true);
+        return true;
     }
+
 
 // End Auth Class
 }
