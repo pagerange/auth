@@ -19,9 +19,11 @@ class Auth implements IAuthenticate
      * Variable to hold the PDO database handle
      */
     private $dbh = null;
+    private $testing;
 
-    public function __construct(\PDO $dbh){
+    public function __construct(\PDO $dbh, $testing = false){
         $this->dbh = $dbh;
+        $this->testing = $testing;
     }
 
 
@@ -178,7 +180,9 @@ class Auth implements IAuthenticate
         $_SESSION['auth_user_name'] = $user->name;
         $_SESSION['auth_user_id'] = $user->id;
         $_SESSION['ugroups'] = json_decode($user->ugroups);
-        session_regenerate_id();
+        if(!$this->testing) {
+            session_regenerate_id(true);
+        }
         return true;
     }
 
@@ -192,7 +196,9 @@ class Auth implements IAuthenticate
         unset($_SESSION['auth_user_id']);
         unset($_SESSION['auth_logged_in']);
         unset($_SESSION['ugroups']);
-        session_regenerate_id(true);
+        if(!$this->testing) {
+            session_regenerate_id(true);
+        }
         return true;
     }
 

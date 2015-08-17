@@ -5,15 +5,14 @@ use \Pagerange\Auth\Auth;
 
 class AuthUpdateProfileTest extends PHPUnit_Framework_TestCase
 {
+
+    static $auth;
     
     public static function setUpBeforeClass()
     {
-        // Pass true to ensure we are in testing mode
-        Auth::init(true);
-    }
-
-    public static function tearDownAfterClass()
-    {
+        $dbh = new \PDO('sqlite:test_db.sqlite');
+        // pass true to ensure we are in testing mode
+        static::$auth = new Auth($dbh, true);
     }
 
  
@@ -25,8 +24,8 @@ class AuthUpdateProfileTest extends PHPUnit_Framework_TestCase
         $first = 'a-' . $rand;
         $user->name = $first.'@maloy.com';
         $user->password = 'mypass';
-        Auth::register($user);
-        $registered_user = Auth::user();
+        static::$auth->register($user);
+        $registered_user = static::$auth->user();
       
         $this->assertTrue(is_object($registered_user), 
           'User object should exist after registration');
@@ -34,7 +33,7 @@ class AuthUpdateProfileTest extends PHPUnit_Framework_TestCase
         // Make some changes to user info and submit them
         $registered_user->first_name = 'Tom';
         $registered_user->last_name = 'Malloy';
-        $updated_user = Auth::update($registered_user);
+        $updated_user = static::$auth->update($registered_user);
 
         $this->assertTrue(is_object($updated_user),
           'A new user object was returned upon update');

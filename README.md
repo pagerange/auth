@@ -7,9 +7,18 @@ project requiring simple authentication.  Why another Authentication class?
 I wanted something simple to implement authentication on some one-off projecs.
 Also, much of what is in here is used in course instruction.
 
+Auth works directly with the PHP session.  No session management library is required.
+
+## What's changed?
+
+* Removed all extraneous functionality:
+	+ Flash messaging removed.
+	+ Dependency on session manager removed.  Auth works with the raw PHP session.
+	+ Auth now simply deals with authentication.
+
 ### Dependencies
 
-* pagerange/session
+No dependencies.
 
 ### Installation
 
@@ -57,29 +66,29 @@ use Pagerange\Auth\Auth;
 
 $dbh = new \PDO('your connection info here');
 
-Auth::init($dbh); // PDO object required
+$auth = new \Pagerange\Auth\Auth($dbh);
 
-Auth::login($username, $password); // returns true or false. Sets Flash message.
+$auth->login($username, $password); // returns true or false.
 
-Auth::register($user) // pass in a user object.  Sets Flash message on success.
+$auth->register($user) // pass in a user object.
 
-Auth::update($user) // pass in a user object.  Sets Flash message on success.
+$auth->update($user) // pass in a user object.
 
-Auth::changePassword($password) // pass in a plain text password.  Sets Flash message on success.
+$auth->changePassword($password) // pass in a plain text password.
 
-Auth::logout(void); // logs out the current user.  Sets Flash message
+$auth->logout(void); // logs out the current user.
 
-Auth::check(void); // returns true or false if current user is logged in
+$auth->check(void); // returns true or false if current user is logged in
 
-Auth::guest(void); // returns true or false if current user is a guest (unauthenticated)
+$auth->guest(void); // returns true or false if current user is a guest (unauthenticated)
 
-Auth::group('string'); // returns true or false if user is member of group 'string'
+$auth->group('string'); // returns true or false if user is member of group 'string'
 
-Auth::user(void); // returns all user information except the password
+$auth->user(void); // returns all user information except the password
 
 ```
 
-**Note:** when using Auth::register($user).  The $user object must have,
+**Note:** when using $auth->register($user).  The $user object must have,
 at a minimum, two properties:
 
 * name // the username required for login
@@ -90,13 +99,18 @@ However, the $user object can contain as many fields as are in your auth_user ta
 Both the following will work:
 
 ```php
+
 // Minimal user object
+
 $user->name = 'steve@mydomain.com';
 $user->password = 'mypass';
+
 ```
 
 ```php
+
 // More fleshed out user object
+
 $user->name = 'steve@mydomain.com';
 $user->password = 'mypass';
 $user->first_name = 'Steve';
@@ -106,6 +120,7 @@ $user->ugroups = ['user','editor']'
 
 // etc., etc., etc...
 // so long as additional fields are in your auth_user table
+
 ```
 
 ### Demo
@@ -116,16 +131,12 @@ A simple demo app can be viewed here:
 
 ### To Do
 
-* Add ability to reset forgotten password
+* Forgotten password
 
 
 ### Support
 
 [Auth Github issues page](https://github.com/pagerange/auth/issues/)
-
-I can provide basic support, and will accept feature requests.
-
-Also, please feel free to contribute.
 
 ### License
 
@@ -151,4 +162,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-# updated 2015-08-12
+**updated 2015-08-12**
