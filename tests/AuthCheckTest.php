@@ -5,7 +5,7 @@ if(session_status() !=  PHP_SESSION_ACTIVE) {
     ob_start();
 }
 
-require '../src/Pagerange/Auth/Auth.php';
+require dirname(__DIR__) . "/../../autoload.php";
 
 use \Pagerange\Auth\Auth;
 

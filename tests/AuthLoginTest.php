@@ -1,5 +1,7 @@
 <?php
 
+require dirname(__DIR__) . "/../../autoload.php";
+
 use \Pagerange\Auth\Auth;
 
 class AuthLoginTest extends PHPUnit_Framework_TestCase
