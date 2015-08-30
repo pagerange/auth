@@ -127,7 +127,7 @@ $user->ugroups = ['user','editor']'
 
 A simple demo app can be viewed here:
 
-[Live Demo of Auth Class](http://www.pagerange.com/projects/auth/demo/)
+[Live Demo of Auth Class](http://auth.pagerange.com)
 
 ### To Do
 
@@ -162,4 +162,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-**updated 2015-08-16**
