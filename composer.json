@@ -17,9 +17,6 @@
     "require-dev": {
       "phpunit/phpunit": "4.8.*"
       },
-    "suggest": {
-        "pagerange/flash": "Easily set and manage flash messages in the PHP session"
-    },
     "autoload": {
         "psr-0" : {
           "Pagerange\\Auth" : "src"
