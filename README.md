@@ -22,8 +22,32 @@ No dependencies.
 
 ### Installation
 
+Note: has not yet been released on Packagist.  You can still install  using composer by adding a repositories section to composer.json:
+
+```json
+
+{
+
+ "repositories": [
+  {
+    "type": "vcs",
+    "url": "https://github.com/pagerange/auth.git"
+  }
+ ],
+ "require": {
+  "pagerange/auth": "@alpha"
+ }
+
+}
+
 ```
-    composer require pagerange/auth
+
+Then install with composer:
+
+```bash
+
+  composer install
+
 ```
 
 Auth requires one database table (Also required for tests and demo to work):
